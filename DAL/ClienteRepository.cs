@@ -21,16 +21,16 @@ namespace DAL
         {
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = "Insert Into clientes values (:Identificacion,:PrimerNombre,:SegundoNombre,:PrimerApellido,:SegundoApellido,:telefono)";
+                command.CommandText = "Insert Into clientes values (:Identificacion,:PrimerNombre,:SegundoNombre,:PrimerApellido,:SegundoApellido,:edad,:sexo,:telefono,:cargo)";
                 command.Parameters.Add("Identificacion", OracleDbType.Varchar2).Value = cliente.Identificacion;
                 command.Parameters.Add("PrimerNombre", OracleDbType.Varchar2).Value = cliente.PrimerNombre;
                 command.Parameters.Add("SegundoNombre", OracleDbType.Varchar2).Value = cliente.SegundoNombre;
                 command.Parameters.Add("PrimerApellido", OracleDbType.Varchar2).Value = cliente.PrimerApellido;
                 command.Parameters.Add("SegundoApellido", OracleDbType.Varchar2).Value = cliente.SegundoApellido;
-                command.Parameters.Add("telefono", OracleDbType.Varchar2).Value = cliente.Edad;
-                command.Parameters.Add("telefono", OracleDbType.Varchar2).Value = cliente.Sexo;
+                command.Parameters.Add("edad", OracleDbType.Varchar2).Value = cliente.Edad;
+                command.Parameters.Add("sexo", OracleDbType.Varchar2).Value = cliente.Sexo;
                 command.Parameters.Add("telefono", OracleDbType.Varchar2).Value = cliente.Telefono;
-                command.Parameters.Add("telefono", OracleDbType.Varchar2).Value = cliente.Cargo;
+                command.Parameters.Add("cargo", OracleDbType.Varchar2).Value = cliente.Cargo;
 
                 var filas = command.ExecuteNonQuery();
                 return filas;

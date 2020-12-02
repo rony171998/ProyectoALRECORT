@@ -40,6 +40,8 @@ namespace PresentacionGUI.Forms
             cliente.Sexo = cmbSexo.Text;
             cliente.Telefono = txtTelefono.Text;
             cliente.Cargo = cmbCargo.Text;
+            cliente.Email = txtCorreo.Text;
+
             return cliente;
 
         }

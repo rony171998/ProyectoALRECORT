@@ -5,6 +5,7 @@ using Oracle.ManagedDataAccess.Client;
 using System.Transactions;
 using System.Linq;
 using System.Collections.Generic;
+using Infraestructura;
 
 namespace BLL
 {
@@ -20,12 +21,15 @@ namespace BLL
         }
         public string Guardar(Cliente cliente)
         {
+            Email email = new Email();
+            string mensajeemail = string.Empty;
             try
             {
                 conexion.Open();
                 //if (repositorio.BuscarPorIdentificacion(cliente.Identificacion) == null)
                // {
                     repositorio.Guardar(cliente);
+                mensajeemail = email.EnviarEmail(cliente);
                     return $"Se guardaron los de {cliente.PrimerNombre} datos satisfactoriamente";
                 //}
                // return $"La persona ya existe";
