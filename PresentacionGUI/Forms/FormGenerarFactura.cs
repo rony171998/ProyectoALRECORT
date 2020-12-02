@@ -16,6 +16,7 @@ using Entity;
 namespace PresentacionGUI.Forms
 {
     
+
     public partial class FormGenerarFactura : Form
     {
         ClienteService clienteService;
