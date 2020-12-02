@@ -23,8 +23,7 @@ namespace Infraestructura
             smtp.Port = 587;
             smtp.EnableSsl = true;
             smtp.UseDefaultCredentials = false;
-            smtp.Credentials = new System.Net.NetworkCredential("leiderandrestorresavila@gmail.com",
-             "16092002LAta");
+            smtp.Credentials = new System.Net.NetworkCredential("leiderandrestorresavila@gmail.com","16092002LAta");
         }
         private void ConfigurarEmail(Cliente cliente)
         {
