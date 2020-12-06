@@ -38,7 +38,8 @@ namespace PresentacionGUI.Forms
         public void MostrarLista()
         {
             ConsultaServicioRespuesta respuesta = new ConsultaServicioRespuesta();
-            
+
+            dtgServicios.DataSource = null;
             respuesta = servicioService.ConsultarTodos();
             dtgServicios.DataSource = respuesta.servicios;                      
 
@@ -51,6 +52,7 @@ namespace PresentacionGUI.Forms
             
             string mensaje = servicioService.Guardar(servicio);
             MessageBox.Show(mensaje, "Mensaje de Guardado", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            MostrarLista();
             
         }
 

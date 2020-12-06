@@ -5,14 +5,13 @@ using Entity;
 using System.Data;
 using Oracle.ManagedDataAccess.Client;
 using System.Transactions;
-using System.Linq;
 
 namespace DAL
 {
     public class ServicioRepository
     {
-        private  readonly OracleConnection _connection;
-        private readonly List<Servicio> servicios = new List<Servicio>();
+        private readonly OracleConnection _connection;
+        private readonly List<Servicio> Servicioes = new List<Servicio>();
         public ServicioRepository(ConnectionManager connection)
         {
             _connection = connection._conexion;
@@ -22,10 +21,11 @@ namespace DAL
         {
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = "Insert Into servicio values (:ID,:descripcion,:precio)";
-                command.Parameters.Add("IDservicio", OracleDbType.Varchar2).Value = servicio.IDServicio;
-                command.Parameters.Add("descripcion", OracleDbType.Varchar2).Value = servicio.Nombre;
-                command.Parameters.Add("precio", OracleDbType.Varchar2).Value = servicio.Costo;
+                command.CommandText = "Insert Into servicio values (:ID,:Descripcion,:Precio)";
+                command.Parameters.Add("ID", OracleDbType.Varchar2).Value = servicio.IDServicio;
+                command.Parameters.Add("Descripcion", OracleDbType.Varchar2).Value = servicio.Nombre;
+                command.Parameters.Add("Precio", OracleDbType.Varchar2).Value = servicio.Costo;
+                
 
                 var filas = command.ExecuteNonQuery();
                 return filas;
@@ -35,8 +35,8 @@ namespace DAL
         {
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = "Delete from servicio where ID=:Identificacion";
-                command.Parameters.Add("Identificacion", OracleDbType.Varchar2).Value = servicio.IDServicio;
+                command.CommandText = "Delete from servicio where Id=:Id";
+                command.Parameters.Add("Id", OracleDbType.Varchar2).Value = servicio.IDServicio;
                 var filas = command.ExecuteNonQuery();
                 return filas;
             }
@@ -45,12 +45,11 @@ namespace DAL
         {
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = @"update servicio set descripcion=:Nombre,precio=:Costo where ID=:IDservicio";
-
-                command.Parameters.Add("IDservicio", OracleDbType.Varchar2).Value = servicio.IDServicio;
-                command.Parameters.Add("Nombre", OracleDbType.Varchar2).Value = servicio.Nombre;
-                command.Parameters.Add("Costo", OracleDbType.Varchar2).Value = servicio.Costo;
-                
+                command.CommandText = @"update servicio set Descripcion=:Descripcion,Precio=:Precio
+                                        where Id=:Id";
+                command.Parameters.Add("Id", OracleDbType.Varchar2).Value = servicio.IDServicio;
+                command.Parameters.Add("Descripcion", OracleDbType.Varchar2).Value = servicio.Nombre;
+                command.Parameters.Add("Precio", OracleDbType.Varchar2).Value = servicio.Costo;
                 OracleTransaction transaction = _connection.BeginTransaction();
                 var filas = command.ExecuteNonQuery();
                 transaction.Commit();
@@ -62,47 +61,42 @@ namespace DAL
             OracleDataReader dataReader;
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = "select ID,descripcion from servicio where ID=:ID ";
-                command.Parameters.Add("ID", OracleDbType.Varchar2).Value = identificacion;
+                command.CommandText = "select ID,descripcion from servicio where ID=:Id ";
+                command.Parameters.Add("Id", OracleDbType.Varchar2).Value = identificacion;
                 dataReader = command.ExecuteReader();
                 dataReader.Read();
-                Servicio servicio = DataReaderMapToServicio(dataReader);
+                Servicio servicio = DataReaderMapToPerson(dataReader);
                 return servicio;
             }
         }
-        private Servicio DataReaderMapToServicio(OracleDataReader dataReader)
+        private Servicio DataReaderMapToPerson(OracleDataReader dataReader)
         {
-            
+            if (!dataReader.HasRows) return null;
             Servicio servicio = new Servicio();
-            servicio.IDServicio =dataReader.GetString(0);
+            servicio.IDServicio = dataReader.GetString(0);
             servicio.Nombre = dataReader.GetString(1);
             servicio.Costo = dataReader.GetString(2);
             
             return servicio;
         }
-        
         public List<Servicio> ConsultarTodos()
         {
             OracleDataReader dataReader;
-            List<Servicio> servicios = new List<Servicio>();
+            List<Servicio> servicioes = new List<Servicio>();
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = "Select * from servicio ";
+                command.CommandText = "Select * from servicio";
                 dataReader = command.ExecuteReader();
                 if (dataReader.HasRows)
                 {
                     while (dataReader.Read())
                     {
-                        Servicio servicio = DataReaderMapToServicio(dataReader);
-                        servicios.Add(servicio);
+                        Servicio servicio = DataReaderMapToPerson(dataReader);
+                        servicioes.Add(servicio);
                     }
                 }
             }
-            return servicios;
-        }
-        public int Totalizar()
-        {
-            return ConsultarTodos().Count();
+            return servicioes;
         }
     }
 }

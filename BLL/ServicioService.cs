@@ -1,11 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using Infraestructura;
 using DAL;
 using Entity;
-using Oracle.ManagedDataAccess.Client;
-using System.Transactions;
-using System.Linq;
-using System.Collections.Generic;
-using Infraestructura;
 
 namespace BLL
 {
@@ -26,12 +24,12 @@ namespace BLL
             try
             {
                 conexion.Open();
-                if (repositorio.BuscarPorIdentificacion(servicio.IDServicio.ToString()) == null)
+                if (repositorio.BuscarPorIdentificacion(servicio.IDServicio) == null)
                 {
                     repositorio.Guardar(servicio);
-                //mensajeemail = email.EnviarEmail(servicio);
+                    //mensajeemail = email.EnviarEmail(servicio);
                     return $"Se guardaron los de {servicio.Nombre} datos satisfactoriamente";
-               }
+                }
                 return $"La persona ya existe";
             }
             catch (Exception e)
@@ -47,7 +45,7 @@ namespace BLL
             try
             {
                 conexion.Open();
-                if (repositorio.BuscarPorIdentificacion(servicio.IDServicio.ToString()) == null)
+                if (repositorio.BuscarPorIdentificacion(servicio.IDServicio) == null)
                 {
                     repositorio.Guardar(servicio);
                     //mensajeemail = email.EnviarEmail(servicio);
@@ -60,26 +58,6 @@ namespace BLL
                 return $"Error de la Aplicacion: {e.Message}";
             }
             finally { conexion.Close(); }
-        }
-        public string ConsultarTodosservicios()
-        {
-
-            try
-            {
-
-                conexion.Open();
-                repositorio.ConsultarTodos();
-                conexion.Close();
-
-                return "correcto";
-            }
-            catch (Exception e)
-            {
-                return $"Error de la Aplicacion: {e.Message}";
-            }
-
-            finally { conexion.Close(); }
-
         }
         public ConsultaServicioRespuesta ConsultarTodos()
         {
@@ -110,7 +88,6 @@ namespace BLL
             finally { conexion.Close(); }
 
         }
-        
 
 
         public BusquedaServicioRespuesta BuscarxIdentificacion(string identificacion)
@@ -122,7 +99,7 @@ namespace BLL
                 conexion.Open();
                 respuesta.servicio = repositorio.BuscarPorIdentificacion(identificacion);
                 conexion.Close();
-                respuesta.Mensaje = (respuesta.servicio != null) ? "Se encontró la Persona buscada" : "La persona buscada no existe";
+                respuesta.Mensaje = (respuesta.servicio != null) ? "Se encontró la Servicio buscada" : "La persona buscada no existe";
                 respuesta.Error = false;
                 return respuesta;
             }
@@ -135,30 +112,6 @@ namespace BLL
             }
             finally { conexion.Close(); }
         }
-        public ConteoServicioRespuesta Totalizar()
-        {
-            ConteoServicioRespuesta respuesta = new ConteoServicioRespuesta();
-            try
-            {
-
-                conexion.Open();
-                respuesta.Cuenta = repositorio.Totalizar(); ;
-                conexion.Close();
-                respuesta.Error = false;
-                respuesta.Mensaje = "Se consultan los Datos";
-
-                return respuesta;
-            }
-            catch (Exception e)
-            {
-                respuesta.Mensaje = $"Error de la Aplicacion: {e.Message}";
-                respuesta.Error = true;
-                return respuesta;
-            }
-            finally { conexion.Close(); }
-
-        }
-
 
 
 
@@ -189,5 +142,3 @@ namespace BLL
     }
 
 }
-    
-
