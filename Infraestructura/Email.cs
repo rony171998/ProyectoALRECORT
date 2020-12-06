@@ -13,23 +13,20 @@ namespace Infraestructura
         {
             smtp = new SmtpClient();
         }
-        //private void ConfigurarSmt() { }
-       // private void ConfigurarEmail(Cliente cliente) { }
-        //public string EnviarEmail(Cliente cliente) { }
-
+        
         private void ConfigurarSmt()
         {
             smtp.Host = "smtp.gmail.com";
             smtp.Port = 587;
             smtp.EnableSsl = true;
             smtp.UseDefaultCredentials = false;
-            smtp.Credentials = new System.Net.NetworkCredential("leiderandrestorresavila@gmail.com","16092002LAta");
+            smtp.Credentials = new System.Net.NetworkCredential("rony171998@gmail.com","rony17abril1998");
         }
         private void ConfigurarEmail(Cliente cliente)
         {
             email = new MailMessage();
-            email.To.Add(cliente.Email);
-            email.From = new MailAddress("leiderandrestorresavila@gmail.com");
+            email.To.Add(cliente.PrimerNombre); //hay debe ir el email
+            email.From = new MailAddress("rony171998@gmail.com");
             email.Subject = "Registro de Usuario "
                 + DateTime.Now.ToString("dd/MMM/yyy hh:mm:ss");
             email.Body = $"<b>Sr {cliente.PrimerNombre }</b> <br " +

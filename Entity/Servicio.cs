@@ -8,10 +8,10 @@ namespace Entity
 {
     public class Servicio
     {
-        public Servicio(int iDServicio, string descripcion, string nombre, double costo)
+        public Servicio(string iDServicio, string nombre, string costo)
         {
             IDServicio = iDServicio;
-            Descripcion = descripcion;
+            
             Nombre = nombre;
             Costo = costo;
         }
@@ -21,10 +21,10 @@ namespace Entity
 
         }
 
-        public int IDServicio { get; set; }
-        public string Descripcion { get; set; }
+        public string IDServicio { get; set; }
+        
         public string Nombre { get; set; }
-        public double Costo { get; set; }
+        public string Costo { get; set; }
         
         
 

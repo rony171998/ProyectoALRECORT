@@ -30,7 +30,7 @@ namespace PresentacionGUI.Forms
         private void FormConsultarClientes_Load(object sender, EventArgs e)
         {
             // TODO: esta línea de código carga datos en la tabla 'dataSet1.ALUMNOS' Puede moverla o quitarla según sea necesario.
-            this.aLUMNOSTableAdapter.Fill(this.dataSet1.ALUMNOS);
+            //this.aLUMNOSTableAdapter.Fill(this.dataSet1.ALUMNOS);
 
         }
 

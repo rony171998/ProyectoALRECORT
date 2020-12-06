@@ -8,12 +8,12 @@ namespace Entity
 {
     public class Proveedor
     {
-        public Proveedor(string identificacion, string nombre, string material, string correo, int telefono)
+        public Proveedor(string identificacion, string nombre, string producto, string correo, string telefono)
         {
             Identificacion = identificacion;
             Nombre = nombre;
-            Material = material;
-            Correo = correo;
+            Producto = producto;
+            //Correo = correo;
             Telefono = telefono;
         }
 
@@ -23,8 +23,8 @@ namespace Entity
 
         public string Identificacion { get; set; }
         public string Nombre { get; set; }
-        public string Material { get; set; }
-        public string Correo { get; set; }
-        public int Telefono { get; set; }
+        public string Producto { get; set; }
+        //public string Correo { get; set; }
+        public string Telefono { get; set; }
     }
 }

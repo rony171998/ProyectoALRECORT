@@ -8,11 +8,14 @@ namespace Entity
 {
     public class Material
     {
-        public Material(string id, string nombre, int existencias)
+        public Material(string id, string nombre, int existencias, DateTime fechaRegistro,string idProveedor)
         {
             Id = id;
             Nombre = nombre;
             Existencias = existencias;
+            FechaRegistro = fechaRegistro;
+            IdProveedor = idProveedor;
+
         }
 
         public Material()
@@ -22,6 +25,9 @@ namespace Entity
         public string Id { get; set; }
         public string Nombre { get; set; }
         public int Existencias { get; set; }
+
+        public DateTime FechaRegistro { get; set; }
+        public string IdProveedor { get; set; }
 
         public int AgregarExistencias(int cantidad)
         {

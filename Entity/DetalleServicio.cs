@@ -25,7 +25,7 @@ namespace Entity
 
         public void CalcularValor()
         {
-            Valor=Convert.ToInt32(Servicio.Costo* Cantidad);
+            //Valor=Convert.ToInt32(Servicio.Costo* Cantidad);
         }
     }
 }

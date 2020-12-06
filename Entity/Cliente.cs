@@ -19,7 +19,7 @@ namespace Entity
             Sexo = sexo;
             Telefono = telefono;
             Cargo = cargo;
-            Email = email;
+            //Email = email;
 
         }
 
@@ -39,7 +39,7 @@ namespace Entity
 
         public string Cargo { get; set; }
 
-        public string Email { get; set; }
+        //public string Email { get; set; }
 
 
 

@@ -28,127 +28,118 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.TabPage tabPage1;
+            this.components = new System.ComponentModel.Container();
+            this.DatosFactura = new System.Windows.Forms.TabPage();
+            this.cmbServicios = new System.Windows.Forms.ComboBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.btnNext = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBox12 = new System.Windows.Forms.TextBox();
             this.textBox11 = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
             this.lbl_IDFactura = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.sERVICIOBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataSet2 = new PresentacionGUI.DataSet2();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.cmbCargo = new System.Windows.Forms.ComboBox();
+            this.cmbSexo = new System.Windows.Forms.ComboBox();
             this.boton_Registrar = new System.Windows.Forms.Button();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.txtSexo = new System.Windows.Forms.Label();
             this.labelEdad = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.txtTelefono = new System.Windows.Forms.TextBox();
             this.txtEdad = new System.Windows.Forms.TextBox();
             this.txtIdentificacion = new System.Windows.Forms.TextBox();
             this.txtSegundoApelido = new System.Windows.Forms.TextBox();
             this.txtPrimerApellido = new System.Windows.Forms.TextBox();
             this.txtSegundoNombre = new System.Windows.Forms.TextBox();
             this.txtPrimerNombre = new System.Windows.Forms.TextBox();
-            this.txtTelefono = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.cmbSexo = new System.Windows.Forms.ComboBox();
-            this.cmbCargo = new System.Windows.Forms.ComboBox();
-            this.txtCorreo = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            tabPage1 = new System.Windows.Forms.TabPage();
-            tabPage1.SuspendLayout();
-            this.tabControl1.SuspendLayout();
+            this.label3 = new System.Windows.Forms.Label();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.sERVICIOTableAdapter = new PresentacionGUI.DataSet2TableAdapters.SERVICIOTableAdapter();
+            this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
+            this.dataSet3 = new PresentacionGUI.DataSet3();
+            this.sERVICIOBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.sERVICIOTableAdapter1 = new PresentacionGUI.DataSet3TableAdapters.SERVICIOTableAdapter();
+            this.DatosFactura.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sERVICIOBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet2)).BeginInit();
             this.tabPage2.SuspendLayout();
+            this.tabControl1.SuspendLayout();
+            this.toolStripContainer1.ContentPanel.SuspendLayout();
+            this.toolStripContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sERVICIOBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
-            // tabPage1
+            // DatosFactura
             // 
-            tabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(74)))));
-            tabPage1.Controls.Add(this.btnNext);
-            tabPage1.Controls.Add(this.label1);
-            tabPage1.Controls.Add(this.textBox12);
-            tabPage1.Controls.Add(this.textBox11);
-            tabPage1.Controls.Add(this.label11);
-            tabPage1.Controls.Add(this.textBox10);
-            tabPage1.Controls.Add(this.label10);
-            tabPage1.Controls.Add(this.label2);
-            tabPage1.Controls.Add(this.textBox2);
-            tabPage1.Controls.Add(this.lbl_IDFactura);
-            tabPage1.Controls.Add(this.textBox1);
-            tabPage1.ForeColor = System.Drawing.SystemColors.ControlText;
-            tabPage1.Location = new System.Drawing.Point(4, 22);
-            tabPage1.Name = "tabPage1";
-            tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            tabPage1.Size = new System.Drawing.Size(805, 496);
-            tabPage1.TabIndex = 0;
-            tabPage1.Text = "Datos de Factura";
+            this.DatosFactura.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(74)))));
+            this.DatosFactura.Controls.Add(this.cmbServicios);
+            this.DatosFactura.Controls.Add(this.dataGridView1);
+            this.DatosFactura.Controls.Add(this.btnNext);
+            this.DatosFactura.Controls.Add(this.textBox11);
+            this.DatosFactura.Controls.Add(this.textBox2);
+            this.DatosFactura.Controls.Add(this.label10);
+            this.DatosFactura.Controls.Add(this.label2);
+            this.DatosFactura.Controls.Add(this.lbl_IDFactura);
+            this.DatosFactura.Location = new System.Drawing.Point(4, 22);
+            this.DatosFactura.Name = "DatosFactura";
+            this.DatosFactura.Padding = new System.Windows.Forms.Padding(3);
+            this.DatosFactura.Size = new System.Drawing.Size(805, 498);
+            this.DatosFactura.TabIndex = 2;
+            this.DatosFactura.Text = "DatosFactura";
+            // 
+            // cmbServicios
+            // 
+            this.cmbServicios.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cmbServicios.FormattingEnabled = true;
+            this.cmbServicios.Location = new System.Drawing.Point(230, 46);
+            this.cmbServicios.Name = "cmbServicios";
+            this.cmbServicios.Size = new System.Drawing.Size(234, 21);
+            this.cmbServicios.TabIndex = 61;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(106, 151);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(663, 192);
+            this.dataGridView1.TabIndex = 60;
             // 
             // btnNext
             // 
             this.btnNext.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnNext.Location = new System.Drawing.Point(349, 352);
+            this.btnNext.Location = new System.Drawing.Point(414, 376);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(120, 50);
-            this.btnNext.TabIndex = 37;
-            this.btnNext.Text = "Siguiente";
+            this.btnNext.TabIndex = 59;
+            this.btnNext.Text = "Registrar";
             this.btnNext.UseVisualStyleBackColor = true;
-            // 
-            // label1
-            // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Gainsboro;
-            this.label1.Location = new System.Drawing.Point(238, 296);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(39, 17);
-            this.label1.TabIndex = 36;
-            this.label1.Text = "Total";
-            // 
-            // textBox12
-            // 
-            this.textBox12.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBox12.Enabled = false;
-            this.textBox12.Location = new System.Drawing.Point(303, 293);
-            this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(234, 20);
-            this.textBox12.TabIndex = 35;
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
             // 
             // textBox11
             // 
             this.textBox11.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBox11.Location = new System.Drawing.Point(303, 187);
+            this.textBox11.Location = new System.Drawing.Point(563, 94);
             this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(234, 20);
-            this.textBox11.TabIndex = 34;
+            this.textBox11.Size = new System.Drawing.Size(206, 20);
+            this.textBox11.TabIndex = 56;
             // 
-            // label11
+            // textBox2
             // 
-            this.label11.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.Color.Gainsboro;
-            this.label11.Location = new System.Drawing.Point(152, 242);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(125, 17);
-            this.label11.TabIndex = 32;
-            this.label11.Text = "Precio del Servicio";
-            // 
-            // textBox10
-            // 
-            this.textBox10.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBox10.Location = new System.Drawing.Point(303, 239);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(234, 20);
-            this.textBox10.TabIndex = 31;
+            this.textBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.textBox2.Location = new System.Drawing.Point(230, 94);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(234, 20);
+            this.textBox2.TabIndex = 51;
             // 
             // label10
             // 
@@ -156,11 +147,11 @@
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.Gainsboro;
-            this.label10.Location = new System.Drawing.Point(169, 187);
+            this.label10.Location = new System.Drawing.Point(479, 97);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(108, 17);
-            this.label10.TabIndex = 30;
-            this.label10.Text = "Tipo de Servicio";
+            this.label10.Size = new System.Drawing.Size(39, 17);
+            this.label10.TabIndex = 53;
+            this.label10.Text = "Total";
             // 
             // label2
             // 
@@ -168,19 +159,11 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Gainsboro;
-            this.label2.Location = new System.Drawing.Point(230, 135);
+            this.label2.Location = new System.Drawing.Point(139, 94);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(47, 17);
-            this.label2.TabIndex = 29;
-            this.label2.Text = "Fecha";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBox2.Location = new System.Drawing.Point(303, 132);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(234, 20);
-            this.textBox2.TabIndex = 28;
+            this.label2.Size = new System.Drawing.Size(71, 17);
+            this.label2.TabIndex = 52;
+            this.label2.Text = "Cantidad";
             // 
             // lbl_IDFactura
             // 
@@ -188,30 +171,21 @@
             this.lbl_IDFactura.AutoSize = true;
             this.lbl_IDFactura.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_IDFactura.ForeColor = System.Drawing.Color.Gainsboro;
-            this.lbl_IDFactura.Location = new System.Drawing.Point(203, 84);
+            this.lbl_IDFactura.Location = new System.Drawing.Point(103, 50);
             this.lbl_IDFactura.Name = "lbl_IDFactura";
-            this.lbl_IDFactura.Size = new System.Drawing.Size(74, 17);
-            this.lbl_IDFactura.TabIndex = 27;
-            this.lbl_IDFactura.Text = "ID Factura";
+            this.lbl_IDFactura.Size = new System.Drawing.Size(107, 17);
+            this.lbl_IDFactura.TabIndex = 50;
+            this.lbl_IDFactura.Text = "Tipo de servicio";
             // 
-            // textBox1
+            // sERVICIOBindingSource
             // 
-            this.textBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBox1.Location = new System.Drawing.Point(303, 83);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(234, 20);
-            this.textBox1.TabIndex = 26;
+            this.sERVICIOBindingSource.DataMember = "SERVICIO";
+            this.sERVICIOBindingSource.DataSource = this.dataSet2;
             // 
-            // tabControl1
+            // dataSet2
             // 
-            this.tabControl1.Controls.Add(tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 0);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(813, 524);
-            this.tabControl1.TabIndex = 26;
+            this.dataSet2.DataSetName = "DataSet2";
+            this.dataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // tabPage2
             // 
@@ -223,20 +197,18 @@
             this.tabPage2.Controls.Add(this.label12);
             this.tabPage2.Controls.Add(this.txtSexo);
             this.tabPage2.Controls.Add(this.labelEdad);
-            this.tabPage2.Controls.Add(this.label8);
             this.tabPage2.Controls.Add(this.label7);
             this.tabPage2.Controls.Add(this.label6);
             this.tabPage2.Controls.Add(this.label5);
             this.tabPage2.Controls.Add(this.label4);
             this.tabPage2.Controls.Add(this.txtTelefono);
-            this.tabPage2.Controls.Add(this.label3);
-            this.tabPage2.Controls.Add(this.txtCorreo);
             this.tabPage2.Controls.Add(this.txtEdad);
             this.tabPage2.Controls.Add(this.txtIdentificacion);
             this.tabPage2.Controls.Add(this.txtSegundoApelido);
             this.tabPage2.Controls.Add(this.txtPrimerApellido);
             this.tabPage2.Controls.Add(this.txtSegundoNombre);
             this.tabPage2.Controls.Add(this.txtPrimerNombre);
+            this.tabPage2.Controls.Add(this.label3);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -244,6 +216,29 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Datos de Cliente";
             this.tabPage2.Click += new System.EventHandler(this.tabPage2_Click);
+            // 
+            // cmbCargo
+            // 
+            this.cmbCargo.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cmbCargo.FormattingEnabled = true;
+            this.cmbCargo.Items.AddRange(new object[] {
+            "ING SISTEMAS"});
+            this.cmbCargo.Location = new System.Drawing.Point(185, 422);
+            this.cmbCargo.Name = "cmbCargo";
+            this.cmbCargo.Size = new System.Drawing.Size(234, 21);
+            this.cmbCargo.TabIndex = 33;
+            // 
+            // cmbSexo
+            // 
+            this.cmbSexo.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cmbSexo.FormattingEnabled = true;
+            this.cmbSexo.Items.AddRange(new object[] {
+            "MASCULINO",
+            "FEMENINO"});
+            this.cmbSexo.Location = new System.Drawing.Point(185, 348);
+            this.cmbSexo.Name = "cmbSexo";
+            this.cmbSexo.Size = new System.Drawing.Size(234, 21);
+            this.cmbSexo.TabIndex = 33;
             // 
             // boton_Registrar
             // 
@@ -255,6 +250,30 @@
             this.boton_Registrar.Text = "Registrar";
             this.boton_Registrar.UseVisualStyleBackColor = true;
             this.boton_Registrar.Click += new System.EventHandler(this.boton_Registrar_Click);
+            // 
+            // label13
+            // 
+            this.label13.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.Color.Gainsboro;
+            this.label13.Location = new System.Drawing.Point(101, 427);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(50, 17);
+            this.label13.TabIndex = 31;
+            this.label13.Text = "Cargo";
+            // 
+            // label12
+            // 
+            this.label12.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.Gainsboro;
+            this.label12.Location = new System.Drawing.Point(101, 386);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(62, 17);
+            this.label12.TabIndex = 31;
+            this.label12.Text = "Telefono";
             // 
             // txtSexo
             // 
@@ -328,17 +347,13 @@
             this.label4.TabIndex = 26;
             this.label4.Text = "Segundo Nombre";
             // 
-            // label3
+            // txtTelefono
             // 
-            this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.Gainsboro;
-            this.label3.Location = new System.Drawing.Point(56, 260);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(105, 17);
-            this.label3.TabIndex = 25;
-            this.label3.Text = "Primer Nombre";
+            this.txtTelefono.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtTelefono.Location = new System.Drawing.Point(185, 386);
+            this.txtTelefono.Name = "txtTelefono";
+            this.txtTelefono.Size = new System.Drawing.Size(234, 20);
+            this.txtTelefono.TabIndex = 24;
             // 
             // txtEdad
             // 
@@ -388,78 +403,70 @@
             this.txtPrimerNombre.Size = new System.Drawing.Size(234, 20);
             this.txtPrimerNombre.TabIndex = 18;
             // 
-            // txtTelefono
+            // label3
             // 
-            this.txtTelefono.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtTelefono.Location = new System.Drawing.Point(185, 386);
-            this.txtTelefono.Name = "txtTelefono";
-            this.txtTelefono.Size = new System.Drawing.Size(234, 20);
-            this.txtTelefono.TabIndex = 24;
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Gainsboro;
+            this.label3.Location = new System.Drawing.Point(56, 260);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(105, 17);
+            this.label3.TabIndex = 25;
+            this.label3.Text = "Primer Nombre";
             // 
-            // label12
+            // tabControl1
             // 
-            this.label12.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.ForeColor = System.Drawing.Color.Gainsboro;
-            this.label12.Location = new System.Drawing.Point(101, 386);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(62, 17);
-            this.label12.TabIndex = 31;
-            this.label12.Text = "Telefono";
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.DatosFactura);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Location = new System.Drawing.Point(0, 0);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(813, 524);
+            this.tabControl1.TabIndex = 26;
             // 
-            // label13
+            // sERVICIOTableAdapter
             // 
-            this.label13.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.ForeColor = System.Drawing.Color.Gainsboro;
-            this.label13.Location = new System.Drawing.Point(101, 427);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(50, 17);
-            this.label13.TabIndex = 31;
-            this.label13.Text = "Cargo";
+            this.sERVICIOTableAdapter.ClearBeforeFill = true;
             // 
-            // cmbSexo
+            // toolStripContainer1
             // 
-            this.cmbSexo.FormattingEnabled = true;
-            this.cmbSexo.Items.AddRange(new object[] {
-            "MASCULINO",
-            "FEMENINO"});
-            this.cmbSexo.Location = new System.Drawing.Point(185, 348);
-            this.cmbSexo.Name = "cmbSexo";
-            this.cmbSexo.Size = new System.Drawing.Size(234, 21);
-            this.cmbSexo.TabIndex = 33;
+            this.toolStripContainer1.BottomToolStripPanelVisible = false;
             // 
-            // cmbCargo
+            // toolStripContainer1.ContentPanel
             // 
-            this.cmbCargo.FormattingEnabled = true;
-            this.cmbCargo.Items.AddRange(new object[] {
-            "ING SISTEMAS"});
-            this.cmbCargo.Location = new System.Drawing.Point(185, 422);
-            this.cmbCargo.Name = "cmbCargo";
-            this.cmbCargo.Size = new System.Drawing.Size(234, 21);
-            this.cmbCargo.TabIndex = 33;
+            this.toolStripContainer1.ContentPanel.AutoScroll = true;
+            this.toolStripContainer1.ContentPanel.Controls.Add(this.tabControl1);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(813, 524);
+            this.toolStripContainer1.ContentPanel.Load += new System.EventHandler(this.toolStripContainer1_ContentPanel_Load);
+            this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.toolStripContainer1.LeftToolStripPanelVisible = false;
+            this.toolStripContainer1.Location = new System.Drawing.Point(0, 0);
+            this.toolStripContainer1.Name = "toolStripContainer1";
+            this.toolStripContainer1.RightToolStripPanelVisible = false;
+            this.toolStripContainer1.Size = new System.Drawing.Size(813, 524);
+            this.toolStripContainer1.TabIndex = 28;
+            this.toolStripContainer1.Text = "toolStripContainer1";
             // 
-            // txtCorreo
+            // toolStripContainer1.TopToolStripPanel
             // 
-            this.txtCorreo.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtCorreo.Location = new System.Drawing.Point(498, 47);
-            this.txtCorreo.Name = "txtCorreo";
-            this.txtCorreo.Size = new System.Drawing.Size(234, 20);
-            this.txtCorreo.TabIndex = 22;
+            this.toolStripContainer1.TopToolStripPanel.Click += new System.EventHandler(this.toolStripContainer1_TopToolStripPanel_Click);
+            this.toolStripContainer1.TopToolStripPanelVisible = false;
             // 
-            // label8
+            // dataSet3
             // 
-            this.label8.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.Gainsboro;
-            this.label8.Location = new System.Drawing.Point(425, 50);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(53, 17);
-            this.label8.TabIndex = 29;
-            this.label8.Text = "Correo";
+            this.dataSet3.DataSetName = "DataSet3";
+            this.dataSet3.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // sERVICIOBindingSource1
+            // 
+            this.sERVICIOBindingSource1.DataMember = "SERVICIO";
+            this.sERVICIOBindingSource1.DataSource = this.dataSet3;
+            // 
+            // sERVICIOTableAdapter1
+            // 
+            this.sERVICIOTableAdapter1.ClearBeforeFill = true;
             // 
             // FormGenerarFactura
             // 
@@ -467,53 +474,66 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(74)))));
             this.ClientSize = new System.Drawing.Size(813, 524);
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.toolStripContainer1);
             this.Name = "FormGenerarFactura";
             this.Text = "FormGenerarFactura";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            tabPage1.ResumeLayout(false);
-            tabPage1.PerformLayout();
-            this.tabControl1.ResumeLayout(false);
+            this.Load += new System.EventHandler(this.FormGenerarFactura_Load);
+            this.DatosFactura.ResumeLayout(false);
+            this.DatosFactura.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sERVICIOBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet2)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            this.tabControl1.ResumeLayout(false);
+            this.toolStripContainer1.ContentPanel.ResumeLayout(false);
+            this.toolStripContainer1.ResumeLayout(false);
+            this.toolStripContainer1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sERVICIOBindingSource1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox12;
+
+        private System.Windows.Forms.TabPage DatosFactura;
+        private System.Windows.Forms.Button btnNext;
         private System.Windows.Forms.TextBox textBox11;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox textBox10;
+        private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label lbl_IDFactura;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.ComboBox cmbCargo;
+        private System.Windows.Forms.ComboBox cmbSexo;
+        private System.Windows.Forms.Button boton_Registrar;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label txtSexo;
         private System.Windows.Forms.Label labelEdad;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtTelefono;
         private System.Windows.Forms.TextBox txtEdad;
         private System.Windows.Forms.TextBox txtIdentificacion;
         private System.Windows.Forms.TextBox txtSegundoApelido;
         private System.Windows.Forms.TextBox txtPrimerApellido;
         private System.Windows.Forms.TextBox txtSegundoNombre;
         private System.Windows.Forms.TextBox txtPrimerNombre;
-        private System.Windows.Forms.Button btnNext;
-        private System.Windows.Forms.Button boton_Registrar;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox txtTelefono;
-        private System.Windows.Forms.ComboBox cmbCargo;
-        private System.Windows.Forms.ComboBox cmbSexo;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox txtCorreo;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.ComboBox cmbServicios;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private DataSet2 dataSet2;
+        private System.Windows.Forms.BindingSource sERVICIOBindingSource;
+        private DataSet2TableAdapters.SERVICIOTableAdapter sERVICIOTableAdapter;
+        private System.Windows.Forms.ToolStripContainer toolStripContainer1;
+        private DataSet3 dataSet3;
+        private System.Windows.Forms.BindingSource sERVICIOBindingSource1;
+        private DataSet3TableAdapters.SERVICIOTableAdapter sERVICIOTableAdapter1;
     }
 }

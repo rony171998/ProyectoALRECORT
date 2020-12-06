@@ -1,36 +1,34 @@
 ﻿using System;
-using Oracle.ManagedDataAccess.Client;
-using System.Transactions;
-using System.Linq;
 using System.Collections.Generic;
+using System.Text;
 using Infraestructura;
 using DAL;
 using Entity;
 
 namespace BLL
 {
-    public class ClienteService
+    public class ProveedorService
     {
         private readonly ConnectionManager conexion;
-        private readonly ClienteRepository repositorio;
-        public ClienteService(string connectionString)
+        private readonly ProveedorRepository repositorio;
+        public ProveedorService(string connectionString)
         {
             conexion = new ConnectionManager(connectionString);
-            repositorio = new ClienteRepository(conexion);
+            repositorio = new ProveedorRepository(conexion);
 
         }
-        public string Guardar(Cliente cliente)
+        public string Guardar(Proveedor proveedor)
         {
             Email email = new Email();
             string mensajeemail = string.Empty;
             try
             {
                 conexion.Open();
-                if (repositorio.BuscarPorIdentificacion(cliente.Identificacion) == null)
+                if (repositorio.BuscarPorIdentificacion(proveedor.Identificacion) == null)
                 {
-                    repositorio.Guardar(cliente);
-                //mensajeemail = email.EnviarEmail(cliente);
-                    return $"Se guardaron los de {cliente.PrimerNombre} datos satisfactoriamente";
+                    repositorio.Guardar(proveedor);
+                    //mensajeemail = email.EnviarEmail(proveedor);
+                    return $"Se guardaron los de {proveedor.Nombre} datos satisfactoriamente";
                 }
                 return $"La persona ya existe";
             }
@@ -40,18 +38,18 @@ namespace BLL
             }
             finally { conexion.Close(); }
         }
-        public string Eliminar(Cliente cliente)
+        public string Eliminar(Proveedor proveedor)
         {
             Email email = new Email();
             string mensajeemail = string.Empty;
             try
             {
                 conexion.Open();
-                if (repositorio.BuscarPorIdentificacion(cliente.Identificacion) == null)
+                if (repositorio.BuscarPorIdentificacion(proveedor.Identificacion) == null)
                 {
-                    repositorio.Guardar(cliente);
-                    //mensajeemail = email.EnviarEmail(cliente);
-                    return $"Se guardaron los de {cliente.PrimerNombre} datos satisfactoriamente";
+                    repositorio.Guardar(proveedor);
+                    //mensajeemail = email.EnviarEmail(proveedor);
+                    return $"Se guardaron los de {proveedor.Nombre} datos satisfactoriamente";
                 }
                 return $"La persona ya existe";
             }
@@ -61,16 +59,16 @@ namespace BLL
             }
             finally { conexion.Close(); }
         }
-        public ConsultaPersonaRespuesta ConsultarTodos()
+        public ConsultaProveedorRespuesta ConsultarTodos()
         {
-            ConsultaPersonaRespuesta respuesta = new ConsultaPersonaRespuesta();
+            ConsultaProveedorRespuesta respuesta = new ConsultaProveedorRespuesta();
             try
             {
 
                 conexion.Open();
-                respuesta.clientes = repositorio.ConsultarTodos();
+                respuesta.proveedores = repositorio.ConsultarTodos();
                 conexion.Close();
-                if (respuesta.clientes.Count > 0)
+                if (respuesta.proveedores.Count > 0)
                 {
                     respuesta.Mensaje = "Se consultan los Datos";
                 }
@@ -91,17 +89,17 @@ namespace BLL
 
         }
 
-        
-        public BusquedaPersonaRespuesta BuscarxIdentificacion(string identificacion)
+
+        public BusquedaProveedorRespuesta BuscarxIdentificacion(string identificacion)
         {
-            BusquedaPersonaRespuesta respuesta = new BusquedaPersonaRespuesta();
+            BusquedaProveedorRespuesta respuesta = new BusquedaProveedorRespuesta();
             try
             {
 
                 conexion.Open();
-                respuesta.cliente = repositorio.BuscarPorIdentificacion(identificacion);
+                respuesta.proveedor = repositorio.BuscarPorIdentificacion(identificacion);
                 conexion.Close();
-                respuesta.Mensaje = (respuesta.cliente != null) ? "Se encontró la Persona buscada" : "La persona buscada no existe";
+                respuesta.Mensaje = (respuesta.proveedor != null) ? "Se encontró la Proveedor buscada" : "La persona buscada no existe";
                 respuesta.Error = false;
                 return respuesta;
             }
@@ -114,29 +112,29 @@ namespace BLL
             }
             finally { conexion.Close(); }
         }
-        
-        
+
+
 
     }
 
-    public class ConsultaPersonaRespuesta
+    public class ConsultaProveedorRespuesta
     {
         public bool Error { get; set; }
         public string Mensaje { get; set; }
-        public IList<Cliente> clientes { get; set; }
+        public IList<Proveedor> proveedores { get; set; }
     }
 
 
-    public class BusquedaPersonaRespuesta
+    public class BusquedaProveedorRespuesta
     {
         public bool Error { get; set; }
         public string Mensaje { get; set; }
-        public Cliente cliente { get; set; }
+        public Proveedor proveedor { get; set; }
     }
 
 
 
-    public class ConteoPersonaRespuesta
+    public class ConteoProveedorRespuesta
     {
         public bool Error { get; set; }
         public string Mensaje { get; set; }
@@ -144,5 +142,3 @@ namespace BLL
     }
 
 }
-    
-

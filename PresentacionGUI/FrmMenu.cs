@@ -137,5 +137,11 @@ namespace PresentacionGUI
         {
 
         }
+
+        private void iconButton7_Click(object sender, EventArgs e)
+        {
+            ActivarBoton(sender, ColoresRGB.QuintoColor);
+            OpenChildForm(new FormServicios());
+        }
     }
 }

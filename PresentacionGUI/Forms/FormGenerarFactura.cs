@@ -20,12 +20,13 @@ namespace PresentacionGUI.Forms
     public partial class FormGenerarFactura : Form
     {
         ClienteService clienteService;
-        Cliente cliente; 
+        Cliente cliente;
+   
         public FormGenerarFactura()
         {
             InitializeComponent();
             var connectionString = ConfigConnection.connectionString;
-            clienteService = new ClienteService(connectionString);
+            clienteService = new ClienteService(connectionString);           
             
         }
         private Cliente MapearCliente()
@@ -40,7 +41,7 @@ namespace PresentacionGUI.Forms
             cliente.Sexo = cmbSexo.Text;
             cliente.Telefono = txtTelefono.Text;
             cliente.Cargo = cmbCargo.Text;
-            cliente.Email = txtCorreo.Text;
+            //cliente.Email = txtCorreo.Text;
 
             return cliente;
 
@@ -52,17 +53,46 @@ namespace PresentacionGUI.Forms
             string mensaje = clienteService.Guardar(cliente);
             MessageBox.Show(mensaje, "Mensaje de Guardado", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
 
-            /*string connectionString = "Data Source=localhost:1521/XEPDB1;User Id = rony; Password = rony123";
-            OracleConnection conection = new OracleConnection(connectionString);
-            conection.Open();
-            MessageBox.Show("Se abrió la conexión con el servidor ORACLE ");
-            OracleCommand command = new OracleCommand();
-            command.CommandText = "select * from alumnos";
-            OracleDataReader Datos = command.ExecuteReader();
-            conection.Close();*/
         }
 
         private void tabPage2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FormGenerarFactura_Load(object sender, EventArgs e)
+        {
+            // TODO: esta línea de código carga datos en la tabla 'dataSet3.SERVICIO' Puede moverla o quitarla según sea necesario.
+            //this.sERVICIOTableAdapter1.Fill(this.dataSet3.SERVICIO);
+            // TODO: esta línea de código carga datos en la tabla 'dataSet2.SERVICIO' Puede moverla o quitarla según sea necesario.
+            //this.sERVICIOTableAdapter.Fill(this.dataSet2.SERVICIO);
+
+        }
+
+        private void fillByToolStripButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //this.sERVICIOTableAdapter.FillBy(this.dataSet2.SERVICIO);
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
+
+        }
+
+        private void toolStripContainer1_ContentPanel_Load(object sender, EventArgs e)
+        {
+
+                    }
+
+        private void toolStripContainer1_TopToolStripPanel_Click(object sender, EventArgs e)
         {
 
         }

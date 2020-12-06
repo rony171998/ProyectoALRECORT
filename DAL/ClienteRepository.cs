@@ -36,6 +36,39 @@ namespace DAL
                 return filas;
             }
         }
+        public int Eliminar(Cliente cliente)
+        {
+            using (var command = _connection.CreateCommand())
+            {
+                command.CommandText = "Delete from clientes where Identificacion=:Identificacion";
+                command.Parameters.Add("Identificacion", OracleDbType.Varchar2).Value = cliente.Identificacion;
+                var filas = command.ExecuteNonQuery();
+                return filas;
+            }
+        }
+        public int Modificar(Cliente cliente)
+        {
+            using (var command = _connection.CreateCommand())
+            {
+                command.CommandText = @"update clientes set primerNombre=:PrimerNombre,segundoNombre=:SegundoNombre,primerApellido=:PrimerApellido,
+                                        segundoApellido=:SegundoApellido, edad=:Edad, sexo=:Sexo,telefono=:Telefono,cargo=:Cargo
+                                        where Identificacion=:Identificacion";
+
+                command.Parameters.Add("Identificacion", OracleDbType.Varchar2).Value = cliente.Identificacion;
+                command.Parameters.Add("PrimerNombre", OracleDbType.Varchar2).Value = cliente.PrimerNombre;
+                command.Parameters.Add("SegundoNombre", OracleDbType.Varchar2).Value = cliente.SegundoNombre;
+                command.Parameters.Add("PrimerApellido", OracleDbType.Varchar2).Value = cliente.PrimerApellido;
+                command.Parameters.Add("SegundoApellido", OracleDbType.Varchar2).Value = cliente.SegundoApellido;
+                command.Parameters.Add("Edad", OracleDbType.Varchar2).Value = cliente.Edad;
+                command.Parameters.Add("Sexo", OracleDbType.Varchar2).Value = cliente.Sexo;
+                command.Parameters.Add("Telefono", OracleDbType.Varchar2).Value = cliente.Telefono;
+                command.Parameters.Add("Cargo", OracleDbType.Varchar2).Value = cliente.Cargo;
+                OracleTransaction transaction = _connection.BeginTransaction();
+                var filas = command.ExecuteNonQuery();
+                transaction.Commit();
+                return filas;
+            }
+        }
         public Cliente BuscarPorIdentificacion(string identificacion)
         {
             OracleDataReader dataReader;
@@ -52,17 +85,17 @@ namespace DAL
         private Cliente DataReaderMapToPerson(OracleDataReader dataReader)
         {
             if (!dataReader.HasRows) return null;
-            Cliente persona = new Cliente();
-            persona.Identificacion = dataReader.GetString(0);
-            persona.PrimerNombre = dataReader.GetString(1);
-            persona.SegundoNombre = dataReader.GetString(2);
-            persona.PrimerApellido = dataReader.GetString(3);
-            persona.SegundoApellido = dataReader.GetString(4);
-            persona.Edad = dataReader.GetString(5);
-            persona.Sexo = dataReader.GetString(6);
-            persona.Telefono = dataReader.GetString(7);
-            persona.Cargo = dataReader.GetString(8);
-            return persona;
+            Cliente cliente = new Cliente();
+            cliente.Identificacion = dataReader.GetString(0);
+            cliente.PrimerNombre = dataReader.GetString(1);
+            cliente.SegundoNombre = dataReader.GetString(2);
+            cliente.PrimerApellido = dataReader.GetString(3);
+            cliente.SegundoApellido = dataReader.GetString(4);
+            cliente.Edad = dataReader.GetString(5);
+            cliente.Sexo = dataReader.GetString(6);
+            cliente.Telefono = dataReader.GetString(7);
+            cliente.Cargo = dataReader.GetString(8);
+            return cliente;
         }
         public List<Cliente> ConsultarTodos()
         {
