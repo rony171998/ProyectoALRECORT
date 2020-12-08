@@ -31,7 +31,7 @@ namespace PresentacionGUI.Forms
             servicio = new Servicio();           
             servicio.IDServicio = txtNumeroFactura.Text;
             servicio.Nombre = txtNombreServicio.Text;
-            servicio.Costo =txtPrecio.Text;          
+            servicio.Costo =double.Parse(txtPrecio.Text);          
             return servicio;
         }
 

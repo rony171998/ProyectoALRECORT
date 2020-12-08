@@ -24,9 +24,9 @@ namespace DAL
                 command.CommandText = "Insert Into materiales values (:ID,:Nombre,:FechaRegistro,:Idproveedor,:Cantidad)";
                 command.Parameters.Add("ID", OracleDbType.Varchar2).Value = material.Id;
                 command.Parameters.Add("Nombre", OracleDbType.Varchar2).Value = material.Nombre;
-                command.Parameters.Add("Fecharegistro", OracleDbType.Varchar2).Value = material.FechaRegistro;             
+                command.Parameters.Add("Fecharegistro", OracleDbType.Date).Value = material.FechaRegistro;             
                 command.Parameters.Add("IdProveedor", OracleDbType.Varchar2).Value = material.IdProveedor;
-                command.Parameters.Add("Cantidad", OracleDbType.Varchar2).Value = material.Existencias;
+                command.Parameters.Add("Cantidad", OracleDbType.Int16).Value = material.Existencias;
 
                 var filas = command.ExecuteNonQuery();
                 return filas;
@@ -78,9 +78,9 @@ namespace DAL
             Material material = new Material();
             material.Id = dataReader.GetString(0);
             material.Nombre = dataReader.GetString(1);
-            material.FechaRegistro =DateTime.Parse( dataReader.GetString(2));
+            material.FechaRegistro = dataReader.GetDateTime(2);
             material.IdProveedor = dataReader.GetString(3);
-            material.Existencias = int.Parse(dataReader.GetString(4));
+            material.Existencias = dataReader.GetInt16(4);
             return material;
         }
         public List<Material> ConsultarTodos()

@@ -21,8 +21,8 @@ namespace DAL
         {
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = "Insert Into clientes values (:Identificacion,:PrimerNombre,:SegundoNombre,:PrimerApellido,:SegundoApellido,:edad,:sexo,:telefono,:cargo)";
-                command.Parameters.Add("Identificacion", OracleDbType.Varchar2).Value = cliente.Identificacion;
+                command.CommandText = "Insert Into clientes values (:Cedula,:PrimerNombre,:SegundoNombre,:PrimerApellido,:SegundoApellido,:edad,:sexo,:telefono,)";
+                command.Parameters.Add("Cedula", OracleDbType.Varchar2).Value = cliente.Identificacion;
                 command.Parameters.Add("PrimerNombre", OracleDbType.Varchar2).Value = cliente.PrimerNombre;
                 command.Parameters.Add("SegundoNombre", OracleDbType.Varchar2).Value = cliente.SegundoNombre;
                 command.Parameters.Add("PrimerApellido", OracleDbType.Varchar2).Value = cliente.PrimerApellido;
@@ -30,7 +30,7 @@ namespace DAL
                 command.Parameters.Add("edad", OracleDbType.Varchar2).Value = cliente.Edad;
                 command.Parameters.Add("sexo", OracleDbType.Varchar2).Value = cliente.Sexo;
                 command.Parameters.Add("telefono", OracleDbType.Varchar2).Value = cliente.Telefono;
-                command.Parameters.Add("cargo", OracleDbType.Varchar2).Value = cliente.Cargo;
+                
 
                 var filas = command.ExecuteNonQuery();
                 return filas;
@@ -40,8 +40,8 @@ namespace DAL
         {
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = "Delete from clientes where Identificacion=:Identificacion";
-                command.Parameters.Add("Identificacion", OracleDbType.Varchar2).Value = cliente.Identificacion;
+                command.CommandText = "Delete from clientes where Cedula=:Cedula";
+                command.Parameters.Add("Cedula", OracleDbType.Varchar2).Value = cliente.Identificacion;
                 var filas = command.ExecuteNonQuery();
                 return filas;
             }
@@ -52,9 +52,9 @@ namespace DAL
             {
                 command.CommandText = @"update clientes set primerNombre=:PrimerNombre,segundoNombre=:SegundoNombre,primerApellido=:PrimerApellido,
                                         segundoApellido=:SegundoApellido, edad=:Edad, sexo=:Sexo,telefono=:Telefono,cargo=:Cargo
-                                        where Identificacion=:Identificacion";
+                                        where Cedula=:Cedula";
 
-                command.Parameters.Add("Identificacion", OracleDbType.Varchar2).Value = cliente.Identificacion;
+                command.Parameters.Add("Cedula", OracleDbType.Varchar2).Value = cliente.Identificacion;
                 command.Parameters.Add("PrimerNombre", OracleDbType.Varchar2).Value = cliente.PrimerNombre;
                 command.Parameters.Add("SegundoNombre", OracleDbType.Varchar2).Value = cliente.SegundoNombre;
                 command.Parameters.Add("PrimerApellido", OracleDbType.Varchar2).Value = cliente.PrimerApellido;
@@ -62,7 +62,7 @@ namespace DAL
                 command.Parameters.Add("Edad", OracleDbType.Varchar2).Value = cliente.Edad;
                 command.Parameters.Add("Sexo", OracleDbType.Varchar2).Value = cliente.Sexo;
                 command.Parameters.Add("Telefono", OracleDbType.Varchar2).Value = cliente.Telefono;
-                command.Parameters.Add("Cargo", OracleDbType.Varchar2).Value = cliente.Cargo;
+                
                 OracleTransaction transaction = _connection.BeginTransaction();
                 var filas = command.ExecuteNonQuery();
                 transaction.Commit();
@@ -74,8 +74,8 @@ namespace DAL
             OracleDataReader dataReader;
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = "select Identificacion,PrimerNombre from clientes where Identificacion=:Identificacion ";
-                command.Parameters.Add("Identificacion", OracleDbType.Varchar2).Value = identificacion;
+                command.CommandText = "select Cedula,Primer_Nombre from clientes where Cedula=:Cedula ";
+                command.Parameters.Add("cedula", OracleDbType.Varchar2).Value = identificacion;
                 dataReader = command.ExecuteReader();
                 dataReader.Read();
                 Cliente cliente = DataReaderMapToPerson(dataReader);
@@ -94,7 +94,7 @@ namespace DAL
             cliente.Edad = dataReader.GetString(5);
             cliente.Sexo = dataReader.GetString(6);
             cliente.Telefono = dataReader.GetString(7);
-            cliente.Cargo = dataReader.GetString(8);
+            
             return cliente;
         }
         public List<Cliente> ConsultarTodos()

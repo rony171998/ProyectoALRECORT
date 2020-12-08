@@ -24,7 +24,7 @@ namespace DAL
                 command.CommandText = "Insert Into servicio values (:ID,:Descripcion,:Precio)";
                 command.Parameters.Add("ID", OracleDbType.Varchar2).Value = servicio.IDServicio;
                 command.Parameters.Add("Descripcion", OracleDbType.Varchar2).Value = servicio.Nombre;
-                command.Parameters.Add("Precio", OracleDbType.Varchar2).Value = servicio.Costo;
+                command.Parameters.Add("Precio", OracleDbType.Double).Value = servicio.Costo;
                 
 
                 var filas = command.ExecuteNonQuery();
@@ -75,7 +75,7 @@ namespace DAL
             Servicio servicio = new Servicio();
             servicio.IDServicio = dataReader.GetString(0);
             servicio.Nombre = dataReader.GetString(1);
-            servicio.Costo = dataReader.GetString(2);
+            servicio.Costo = dataReader.GetFloat(2);
             
             return servicio;
         }
