@@ -19,6 +19,7 @@ namespace Entity
 
         public Factura()
         {
+            detalleServicios = new List<Detalle>();
         }
 
         public string IdFactura { get; set; }
@@ -29,7 +30,7 @@ namespace Entity
 
         private List<Detalle> detalleServicios;
 
-        /*/public Detalle AgregarDetalleServicio(Servicio servicio, int cantidad)
+        public Detalle AgregarDetalleServicio(Servicio servicio, int cantidad)
         {
             if (cantidad <= 0)
             {
@@ -38,12 +39,16 @@ namespace Entity
             else
             {
                 Detalle detalleServicio = new Detalle(servicio, cantidad);
-                detalleServicio.factura = this;
+                detalleServicio.Factura = this;
                 detalleServicios.Add(detalleServicio);
                 return detalleServicio;
             }
-        }*/
-
+        }
+        public void CalcularTotal()
+        {
+            Total=detalleServicios.Sum(d => d.ValorTotal);
+            
+        }
 
 
         public List<Detalle> GetdetalleServicios()

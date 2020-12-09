@@ -5,6 +5,7 @@ using Entity;
 using System.Data;
 using Oracle.ManagedDataAccess.Client;
 using System.Transactions;
+using System.Linq;
 
 namespace DAL
 {
@@ -26,8 +27,8 @@ namespace DAL
                 return filas;
             }
         }
-        public int Guardar(Factura factura)
-        {
+        public int GuardarFactura(Factura factura)
+        {           
             using (var command = _connection.CreateCommand())
             {
                 command.CommandText = "Insert Into factura values(:id_factura,:fecha,:total,:id_cliente)";
@@ -39,6 +40,72 @@ namespace DAL
                 var filas = command.ExecuteNonQuery();
                 return filas;
             }
+        }
+        public int Guardar(Factura factura)
+        {
+            factura.IdFactura = (ConsultarTodos().Count() + 1).ToString(); // crear procedimiento que retorne el numero factura
+            foreach (var item in factura.GetdetalleServicios())
+            {
+                item.Id_Factura = factura.IdFactura;
+            }
+            var filas =GuardarFactura(factura);
+            foreach (var item in factura.GetdetalleServicios())
+            {
+                GuardarDetalle(item);
+
+            }
+            return filas;
+            
+
+
+        }
+        public int GuardarDetalle(Detalle detalle)
+        {
+            detalle.Id_detalle = (ConsultarTodosDetalles().Count() + 1).ToString();// generar codigo desde base datos
+            using (var command = _connection.CreateCommand())
+            {
+                command.CommandText = "Insert Into detalle_factura values (:detalle_id,:cantidad,:valorunitario,:valortotal,:servicio_id,:id_factura)";
+                command.Parameters.Add("detalle_id", OracleDbType.Varchar2).Value = detalle.Id_detalle;
+                command.Parameters.Add("cantidad", OracleDbType.Int32).Value = detalle.Cantidad;
+                command.Parameters.Add("valorunitario", OracleDbType.Double).Value = detalle.ValorUnitario;
+                command.Parameters.Add("valortotal", OracleDbType.Double).Value = detalle.ValorTotal;
+                command.Parameters.Add("servicio_id", OracleDbType.Varchar2).Value = detalle.Id_Servicio;
+                command.Parameters.Add("id_factura", OracleDbType.Varchar2).Value = detalle.Id_Factura;
+                var filas = command.ExecuteNonQuery();
+                return filas;
+            }
+        }
+        private Detalle DataReaderMapDetalle(OracleDataReader dataReader)
+        {
+            if (!dataReader.HasRows) return null;
+            Detalle detalle = new Detalle();
+            detalle.Id_detalle = dataReader.GetString(0);
+            detalle.Cantidad = dataReader.GetInt32(1);
+            detalle.ValorUnitario = dataReader.GetDouble(2);
+            detalle.ValorTotal = dataReader.GetDouble(3);
+            detalle.Id_Servicio = dataReader.GetString(4);
+            detalle.Id_Factura = dataReader.GetString(5);
+
+            return detalle;
+        }
+        public List<Detalle> ConsultarTodosDetalles()
+        {
+            OracleDataReader dataReader;
+            List<Detalle> detalles = new List<Detalle>();
+            using (var command = _connection.CreateCommand())
+            {
+                command.CommandText = "Select * from detalle_factura";
+                dataReader = command.ExecuteReader();
+                if (dataReader.HasRows)
+                {
+                    while (dataReader.Read())
+                    {
+                        Detalle detalle = DataReaderMapDetalle(dataReader);
+                        detalles.Add(detalle);
+                    }
+                }
+            }
+            return detalles;
         }
 
 

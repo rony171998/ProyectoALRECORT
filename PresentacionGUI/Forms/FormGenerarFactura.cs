@@ -27,8 +27,8 @@ namespace PresentacionGUI.Forms
         Detalle detalle;
         DetalleService detalleService;
         Servicio servicio;
-        ServicioService ServicioService;
-
+        ServicioService servicioService;
+        
         public FormGenerarFactura()
         {
             InitializeComponent();
@@ -36,8 +36,18 @@ namespace PresentacionGUI.Forms
             clienteService = new ClienteService(connectionString);
             facturaService = new FacturaService(connectionString);
             detalleService = new DetalleService(connectionString);
-            
-            mostrarlistar();
+            servicioService = new ServicioService(connectionString);
+
+            llenarcombos();
+        }
+        public void llenarcombos()
+        {
+            ConsultaServicioRespuesta respuestaservicio = servicioService.ConsultarTodos();
+            cmbId_servicio.DataSource = respuestaservicio.servicios.Select(p => p.IDServicio).ToList();
+
+            ConsultaFacturaRespuesta respuestafactura = facturaService.ConsultarTodos();
+            cmbId_factura.DataSource = respuestafactura.facturas.Select(p => p.IdFactura).ToList();
+
         }
         private Cliente MapearCliente()
         {
@@ -49,57 +59,51 @@ namespace PresentacionGUI.Forms
             cliente.SegundoApellido = txtPrimerApellido.Text;
             cliente.Edad = txtEdad.Text;
             cliente.Sexo = cmbSexo.Text;
-            cliente.Telefono = txtTelefono.Text;
-            
+            cliente.Telefono = txtTelefono.Text;            
             //cliente.Email = txtCorreo.Text;
-
             return cliente;
-
         }
         
         private Factura Mapearfactura()
         {
             factura = new Factura();
-            factura.IdFactura = txtId_factura.Text;
+            factura.IdFactura = cmbId_factura.Text;
             factura.IdCliente = txtIdentificacion.Text;
             factura.Fecha = DateTime.Now;
-            factura.Total = facturaService.calcularTotal(factura);
+            BusquedaServicioRespuesta respuestaservicio = servicioService.BuscarIdentificacion(cmbId_servicio.Text);
+            factura.AgregarDetalleServicio(respuestaservicio.servicio,int.Parse(txtCantidad.Text));
+            factura.CalcularTotal();
+            DTGFacturas.DataSource = factura.GetdetalleServicios();
+            
             return factura;
         }
         private Detalle Mapeardetalle()
         {
-           
             detalle = new Detalle();
-            detalle.Id_Factura = txtId_factura.Text;
             detalle.Id_detalle = txtId_detalle.Text;
-            detalle.Id_Servicio = txtServicio.Text;
-            detalle.ValorUnitario =double.Parse( txtValorunitario.Text);
-            
-            detalle.Cantidad =int.Parse( txtCantidad.Text);
+            detalle.Id_Servicio = cmbId_servicio.Text;
+            detalle.Id_Factura = cmbId_factura.Text;
+            BusquedaServicioRespuesta respuestaservicio = servicioService.BuscarIdentificacion(cmbId_servicio.Text);
+            detalle.ValorUnitario = respuestaservicio.servicio.Costo;         
+            detalle.Cantidad = int.Parse( txtCantidad.Text);
             detalle.ValorTotal = detalle.CalcularValor();
-
-
             return detalle;
         }
-        public void mostrarlistar()
+        public void mostrarlistafactura()
         {
-
             ConsultaFacturaRespuesta respuesta = new ConsultaFacturaRespuesta();
             DTGFacturas.DataSource = null;
             respuesta = facturaService.ConsultarTodos();
             DTGFacturas.DataSource = respuesta.facturas;
-            
         }
-        public void mostrarlistardetalle()
+        public void mostrarlistadetalle()
         {
-
             ConsultaDetalleRespuesta respuesta = new ConsultaDetalleRespuesta();
             DTGFacturas.DataSource = null;
             respuesta = detalleService.ConsultarTodos();
             DTGFacturas.DataSource = respuesta.detalles;
 
         }
-
 
         private void boton_Registrar_Click(object sender, EventArgs e)
         {
@@ -114,12 +118,6 @@ namespace PresentacionGUI.Forms
 
         }
 
-        private void btnNext_Click(object sender, EventArgs e)
-        {
-            
-            
-        }
-
         private void FormGenerarFactura_Load(object sender, EventArgs e)
         {
             // TODO: esta línea de código carga datos en la tabla 'dataSet3.SERVICIO' Puede moverla o quitarla según sea necesario.
@@ -129,66 +127,38 @@ namespace PresentacionGUI.Forms
 
         }
 
-        private void fillByToolStripButton_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                //this.sERVICIOTableAdapter.FillBy(this.dataSet2.SERVICIO);
-            }
-            catch (System.Exception ex)
-            {
-                System.Windows.Forms.MessageBox.Show(ex.Message);
-            }
-
-        }
-
         private void toolStripContainer1_ContentPanel_Load(object sender, EventArgs e)
-        {
-
-                    }
+        {                    }
 
         private void toolStripContainer1_TopToolStripPanel_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void label10_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnNext_Click_1(object sender, EventArgs e)
-        {
-            
+        {  
             Factura factura = Mapearfactura();
             string mensaje = facturaService.Guardar(factura);
-            MessageBox.Show(mensaje, "Mensaje de Guardado", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-            
-
-            mostrarlistar();
+            MessageBox.Show(mensaje, "Mensaje de Guardado", MessageBoxButtons.OKCancel, MessageBoxIcon.Information); 
+           
+            //mostrarlistadetalle();
         }
-
         private void lbl_IDFactura_Click(object sender, EventArgs e)
         {
-
         }
-
         private void registra_detalles_Click(object sender, EventArgs e)
         {
-            Detalle detalle = Mapeardetalle();
-            MessageBox.Show(detalle.Id_Servicio);
-            string mensaje2 = detalleService.Guardar(detalle);
-            MessageBox.Show(mensaje2, "Mensaje de Guardado", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-        }
 
+            Mapearfactura();
+            textBox1.Text = factura.Total.ToString();
+        }
         private void button2_Click(object sender, EventArgs e)
         {
-            mostrarlistardetalle();
+            mostrarlistadetalle();
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
-            mostrarlistar();
+            mostrarlistafactura();
         }
     }
 }

@@ -24,8 +24,9 @@ namespace PresentacionGUI.Forms
         {
             InitializeComponent();
             materialService = new MaterialService(ConfigConnection.connectionString);
+            
             MostrarLista();
-            ListaProveedores();
+            
         }
 
         private void lbl_IDFactura_Click(object sender, EventArgs e)
@@ -63,9 +64,12 @@ namespace PresentacionGUI.Forms
         }
         public void ListaProveedores()
         {
-            ConsultaProveedorRespuesta respuesta = new ConsultaProveedorRespuesta();
-           
+            List<Proveedor> proveedor = new List<Proveedor>();
+            BusquedaProveedorRespuesta respuesta = new BusquedaProveedorRespuesta();
+            proveedor = proveedorService.ConsultarTodos().proveedores.ToList();
             
+            cmbProveedor.DataSource = proveedor.ToArray();
+
         }
 
         private void FormConsultarMateriales_Load(object sender, EventArgs e)

@@ -21,6 +21,9 @@ namespace DAL
         {
             using (var command = _connection.CreateCommand())
             {
+                //command.CommandText = @"begin 
+                                        // PCK_PROYECTO.INSERTAR_CLIENTES(:Cedula,:PrimerNombre,:SegundoNombre,:PrimerApellido,:SegundoApellido,:edad,:sexo,:telefono);
+                                        //end;";
                 command.CommandText = "Insert Into clientes values (:Cedula,:PrimerNombre,:SegundoNombre,:PrimerApellido,:SegundoApellido,:edad,:sexo,:telefono)";
                 command.Parameters.Add("Cedula", OracleDbType.Varchar2).Value = cliente.Identificacion;
                 command.Parameters.Add("PrimerNombre", OracleDbType.Varchar2).Value = cliente.PrimerNombre;

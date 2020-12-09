@@ -25,19 +25,17 @@ namespace BLL
             try
             {
                 conexion.Open();
-                
-                //if (repositorio.BuscarPorIdentificacion(detalle.Id_detalle) == null)
-                //{
-
+                if (repositorio.BuscarPorIdentificacion(detalle.Id_detalle) == null)
+                {
                     repositorio.Guardar(detalle);
                     //mensajeemail = email.EnviarEmail(detalle);
                     return $"Se guardaron detalles satisfactoriamente";
-                //}
-                //return $"La datalle ya existe";
+                }
+                return $"La datalle ya existe";
             }
             catch (Exception e)
             {
-                return $"Error de la Aplicacion: {e.ToString()}";
+                return $"Error de la Aplicacion: {e.Message}";
             }
             finally { conexion.Close(); }
         }

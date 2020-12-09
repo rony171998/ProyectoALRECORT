@@ -88,7 +88,27 @@ namespace BLL
             finally { conexion.Close(); }
 
         }
+        public BusquedaProveedorRespuesta consultatodosproveedores()
+        {
+            BusquedaProveedorRespuesta respuesta = new BusquedaProveedorRespuesta();
+            try
+            {
+                conexion.Open();
+                respuesta.proveedor = repositorio.Buscartodos();
+                conexion.Close();
+                respuesta.Mensaje = (respuesta.proveedor != null) ? "Se encontró la Proveedor buscada" : "La persona buscada no existe";
+                respuesta.Error = false;
+                return respuesta;
+            }
+            catch (Exception e)
+            {
 
+                respuesta.Mensaje = $"Error de la Aplicacion: {e.Message}";
+                respuesta.Error = true;
+                return respuesta;
+            }
+            finally { conexion.Close(); }
+        }
 
         public BusquedaProveedorRespuesta BuscarxIdentificacion(string identificacion)
         {

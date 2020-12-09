@@ -16,20 +16,21 @@ namespace Entity
         public int Cantidad { get; set; }
         public double ValorTotal { get; set; }
         public double ValorUnitario { get; set; }
-
-        public Detalle(string id_servicio, int cantidad,string id_factura,int valorUnitario,int valorTotal,string id_detalle)
-        {
-            Id_Servicio = id_servicio;
-            Cantidad = cantidad;
-            ValorTotal = valorTotal;
-            ValorUnitario = valorUnitario;
-            Id_detalle = id_detalle;
-            Id_Factura = id_factura;
+        public   Factura Factura { get; set; }
+        public  Servicio Servicio { get; set; }
+        public Detalle(Servicio servicio, int cantidad)
+        {           
+            Cantidad = cantidad;           
+            ValorUnitario = servicio.Costo;
+            Servicio = servicio;
+            Id_Servicio = servicio.IDServicio;
+            CalcularValor();
         }
 
         public Detalle()
         {
         }
+
 
         public double CalcularValor()
         {

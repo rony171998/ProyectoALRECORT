@@ -69,6 +69,19 @@ namespace DAL
                 return servicio;
             }
         }
+        public Servicio BuscarIdentificacion(string identificacion)
+        {
+            OracleDataReader dataReader;
+            using (var command = _connection.CreateCommand())
+            {
+                command.CommandText = "select * from servicio where servicio_id=:servicio_Id ";
+                command.Parameters.Add("servicio_id", OracleDbType.Varchar2).Value = identificacion;
+                dataReader = command.ExecuteReader();
+                dataReader.Read();
+                Servicio servicio = DataReaderMapToPerson(dataReader);
+                return servicio;
+            }
+        }
         private Servicio DataReaderMapToPerson(OracleDataReader dataReader)
         {
             if (!dataReader.HasRows) return null;

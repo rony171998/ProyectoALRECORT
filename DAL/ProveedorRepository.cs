@@ -70,6 +70,18 @@ namespace DAL
                 return proveedor;
             }
         }
+        public Proveedor Buscartodos()
+        {
+            OracleDataReader dataReader;
+            using (var command = _connection.CreateCommand())
+            {
+                command.CommandText = "Select * from proveedores ";                
+                dataReader = command.ExecuteReader();
+                dataReader.Read();
+                Proveedor proveedor = DataReaderMapToPerson(dataReader);
+                return proveedor;
+            }
+        }
         private Proveedor DataReaderMapToPerson(OracleDataReader dataReader)
         {
             if (!dataReader.HasRows) return null;

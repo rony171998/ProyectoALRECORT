@@ -114,6 +114,28 @@ namespace BLL
             }
             finally { conexion.Close(); }
         }
+        public BusquedaServicioRespuesta BuscarIdentificacion(string identificacion)
+        {
+            BusquedaServicioRespuesta respuesta = new BusquedaServicioRespuesta();
+            try
+            {
+
+                conexion.Open();
+                respuesta.servicio = repositorio.BuscarIdentificacion(identificacion);
+                conexion.Close();
+                respuesta.Mensaje = (respuesta.servicio != null) ? "Se encontró la Servicio buscada" : "La persona buscada no existe";
+                respuesta.Error = false;
+                return respuesta;
+            }
+            catch (Exception e)
+            {
+
+                respuesta.Mensaje = $"Error de la Aplicacion: {e.Message}";
+                respuesta.Error = true;
+                return respuesta;
+            }
+            finally { conexion.Close(); }
+        }
 
 
 

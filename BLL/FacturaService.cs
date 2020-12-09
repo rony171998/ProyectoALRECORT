@@ -48,13 +48,13 @@ namespace BLL
             try
             {
                 conexion.Open();
-                if (repositorio.BuscarPorIdFactura(factura.IdFactura) == null)
-                {
+                //if (repositorio.BuscarPorIdFactura(factura.IdFactura) == null)
+                //{
                     repositorio.Guardar(factura);
                     //mensajeemail = email.EnviarEmail(cliente);
                     return $"Se guardaron los datos de la factura {factura.IdFactura} satisfactoriamente";
-                }
-                return $"La factura ya existe";
+                //}
+                //return $"La factura ya existe";
             }
             catch (Exception e)
             {
