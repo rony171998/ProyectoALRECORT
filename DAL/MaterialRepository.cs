@@ -21,8 +21,8 @@ namespace DAL
         {
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = "Insert Into materiales values (:ID,:Nombre,:FechaRegistro,:Idproveedor,:Cantidad)";
-                command.Parameters.Add("ID", OracleDbType.Varchar2).Value = material.Id;
+                command.CommandText = "Insert Into materiales values (:id,:Nombre,:FechaRegistro,:Idproveedor,:Cantidad)";
+                command.Parameters.Add("id", OracleDbType.Varchar2).Value = material.Id;
                 command.Parameters.Add("Nombre", OracleDbType.Varchar2).Value = material.Nombre;
                 command.Parameters.Add("Fecharegistro", OracleDbType.Date).Value = material.FechaRegistro;             
                 command.Parameters.Add("IdProveedor", OracleDbType.Varchar2).Value = material.IdProveedor;

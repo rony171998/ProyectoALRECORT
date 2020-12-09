@@ -16,11 +16,16 @@ namespace PresentacionGUI.Forms
     {
         Material material;
         MaterialService materialService;
+        ProveedorService proveedorService;
+        Proveedor proveedor;
+        Factura factura;
+        FacturaService facturaService;
         public FormConsultarMateriales()
         {
             InitializeComponent();
             materialService = new MaterialService(ConfigConnection.connectionString);
             MostrarLista();
+            ListaProveedores();
         }
 
         private void lbl_IDFactura_Click(object sender, EventArgs e)
@@ -35,6 +40,7 @@ namespace PresentacionGUI.Forms
             MessageBox.Show(mensaje, "Mensaje de Guardado", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
             MostrarLista();
         }
+        
         private Material Mapear()
         {
             material = new Material();
@@ -53,6 +59,22 @@ namespace PresentacionGUI.Forms
             DtgMateriales.DataSource = null;
             respuesta = materialService.ConsultarTodos();
             DtgMateriales.DataSource = respuesta.materiales;
+
+        }
+        public void ListaProveedores()
+        {
+            ConsultaProveedorRespuesta respuesta = new ConsultaProveedorRespuesta();
+           
+            
+        }
+
+        private void FormConsultarMateriales_Load(object sender, EventArgs e)
+        {
+            // TODO: esta línea de código carga datos en la tabla 'dataSet5.PROVEEDORES' Puede moverla o quitarla según sea necesario.
+            //this.pROVEEDORESTableAdapter1.Fill(this.dataSet5.PROVEEDORES);
+            // TODO: esta línea de código carga datos en la tabla 'dataSet4.PROVEEDORES' Puede moverla o quitarla según sea necesario.
+            //this.pROVEEDORESTableAdapter.Fill(this.dataSet4.PROVEEDORES);
+
         }
     }
 }

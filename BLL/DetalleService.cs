@@ -7,17 +7,18 @@ using Entity;
 
 namespace BLL
 {
-    public class MaterialService
+    public class DetalleService
     {
         private readonly ConnectionManager conexion;
-        private readonly MaterialRepository repositorio;
-        public MaterialService(string connectionString)
+        private readonly DetalleRepository repositorio;
+        public DetalleService(string connectionString)
         {
             conexion = new ConnectionManager(connectionString);
-            repositorio = new MaterialRepository(conexion);
+            repositorio = new DetalleRepository(conexion);
 
         }
-        public string Guardar(Material material)
+
+        public string Guardar(Detalle detalle)
         {
             Email email = new Email();
             string mensajeemail = string.Empty;
@@ -25,31 +26,35 @@ namespace BLL
             {
                 conexion.Open();
                 
-                    repositorio.Guardar(material);
-                    //mensajeemail = email.EnviarEmail(material);
-                    return $"Se guardaron los de {material.Nombre} datos satisfactoriamente";
-                
+                //if (repositorio.BuscarPorIdentificacion(detalle.Id_detalle) == null)
+                //{
+
+                    repositorio.Guardar(detalle);
+                    //mensajeemail = email.EnviarEmail(detalle);
+                    return $"Se guardaron detalles satisfactoriamente";
+                //}
+                //return $"La datalle ya existe";
             }
             catch (Exception e)
             {
-                return $"Error de la Aplicacion: {e.Message}";
+                return $"Error de la Aplicacion: {e.ToString()}";
             }
             finally { conexion.Close(); }
         }
-        public string Eliminar(Material material)
+        public string Eliminar(Detalle detalle)
         {
             Email email = new Email();
             string mensajeemail = string.Empty;
             try
             {
                 conexion.Open();
-                if (repositorio.BuscarPorIdentificacion(material.Id) == null)
-                {
-                    repositorio.Guardar(material);
-                    //mensajeemail = email.EnviarEmail(material);
-                    return $"Se guardaron los de {material.Nombre} datos satisfactoriamente";
-                }
-                return $"La persona ya existe";
+                //if (repositorio.BuscarPorIdentificacion(detalle.Id_detalle) == null)
+                //{
+                    repositorio.Guardar(detalle);
+                    //mensajeemail = email.EnviarEmail(detalle);
+                    return $"Se guardaron los detalles satisfactoriamente";
+                //}
+                //return $"La persona ya existe";
             }
             catch (Exception e)
             {
@@ -57,16 +62,17 @@ namespace BLL
             }
             finally { conexion.Close(); }
         }
-        public ConsultaMaterialRespuesta ConsultarTodos()
+
+        public ConsultaDetalleRespuesta ConsultarTodos()
         {
-            ConsultaMaterialRespuesta respuesta = new ConsultaMaterialRespuesta();
+            ConsultaDetalleRespuesta respuesta = new ConsultaDetalleRespuesta();
             try
             {
 
                 conexion.Open();
-                respuesta.materiales = repositorio.ConsultarTodos();
+                respuesta.detalles = repositorio.ConsultarTodos();
                 conexion.Close();
-                if (respuesta.materiales.Count > 0)
+                if (respuesta.detalles.Count > 0)
                 {
                     respuesta.Mensaje = "Se consultan los Datos";
                 }
@@ -88,16 +94,16 @@ namespace BLL
         }
 
 
-        public BusquedaMaterialRespuesta BuscarxIdentificacion(string identificacion)
+        public BusquedaDetalleRespuesta BuscarxIdentificacion(string identificacion)
         {
-            BusquedaMaterialRespuesta respuesta = new BusquedaMaterialRespuesta();
+            BusquedaDetalleRespuesta respuesta = new BusquedaDetalleRespuesta();
             try
             {
 
                 conexion.Open();
-                respuesta.material = repositorio.BuscarPorIdentificacion(identificacion);
+                respuesta.detalle = repositorio.BuscarPorIdentificacion(identificacion);
                 conexion.Close();
-                respuesta.Mensaje = (respuesta.material != null) ? "Se encontró la Material buscada" : "La persona buscada no existe";
+                respuesta.Mensaje = (respuesta.detalle != null) ? "Se encontró la Detalle buscada" : "La persona buscada no existe";
                 respuesta.Error = false;
                 return respuesta;
             }
@@ -115,24 +121,24 @@ namespace BLL
 
     }
 
-    public class ConsultaMaterialRespuesta
+    public class ConsultaDetalleRespuesta
     {
         public bool Error { get; set; }
         public string Mensaje { get; set; }
-        public IList<Material> materiales { get; set; }
+        public IList<Detalle> detalles { get; set; }
     }
 
 
-    public class BusquedaMaterialRespuesta
+    public class BusquedaDetalleRespuesta
     {
         public bool Error { get; set; }
         public string Mensaje { get; set; }
-        public Material material { get; set; }
+        public Detalle detalle { get; set; }
     }
 
 
 
-    public class ConteoMaterialRespuesta
+    public class ConteoDetalleRespuesta
     {
         public bool Error { get; set; }
         public string Mensaje { get; set; }
@@ -140,4 +146,3 @@ namespace BLL
     }
 
 }
-

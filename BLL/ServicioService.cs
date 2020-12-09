@@ -17,6 +17,7 @@ namespace BLL
             repositorio = new ServicioRepository(conexion);
 
         }
+        
         public string Guardar(Servicio servicio)
         {
             Email email = new Email();
@@ -59,6 +60,7 @@ namespace BLL
             }
             finally { conexion.Close(); }
         }
+        
         public ConsultaServicioRespuesta ConsultarTodos()
         {
             ConsultaServicioRespuesta respuesta = new ConsultaServicioRespuesta();

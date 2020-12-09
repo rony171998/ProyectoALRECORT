@@ -8,41 +8,45 @@ namespace Entity
 {
     public class Factura
     {
-        public Factura(long idFactura, DateTime fecha, Cliente cliente, int total)
+        public Factura(string idFactura, DateTime fecha, int total,string idCliente)
         {
             IdFactura = idFactura;
-            Fecha = fecha;
-            Cliente = cliente;
+            Fecha = fecha;           
             Total = total;
+            IdCliente = idCliente;
+
         }
 
         public Factura()
         {
         }
 
-        public long IdFactura { get; set; }
+        public string IdFactura { get; set; }
         public DateTime Fecha { get; set; }
-        public Cliente Cliente { get; set; }
-        public int Total { get; set; }
+        
+        public double Total { get; set; }
+        public string IdCliente { get; set; }
 
-        private List<DetalleServicio> detalleServicios;
+        private List<Detalle> detalleServicios;
 
-        public DetalleServicio AgregarDetalleServicio(Servicio servicio, int cantidad)
+        /*/public Detalle AgregarDetalleServicio(Servicio servicio, int cantidad)
         {
-            if (cantidad<=0)
+            if (cantidad <= 0)
             {
                 return null;
             }
             else
             {
-                DetalleServicio detalleServicio = new DetalleServicio(servicio, cantidad);
+                Detalle detalleServicio = new Detalle(servicio, cantidad);
                 detalleServicio.factura = this;
                 detalleServicios.Add(detalleServicio);
                 return detalleServicio;
             }
-        }
+        }*/
 
-        public List<DetalleServicio> GetdetalleServicios()
+
+
+        public List<Detalle> GetdetalleServicios()
         {
             return detalleServicios;
         }

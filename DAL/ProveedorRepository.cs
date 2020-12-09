@@ -62,7 +62,7 @@ namespace DAL
             OracleDataReader dataReader;
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = "select ID,Nombre from proveedores where ID=:Id ";
+                command.CommandText = "select IDENTIFICACION ,Nombre from proveedores where IDENTIFICACION=:Id ";
                 command.Parameters.Add("Id", OracleDbType.Varchar2).Value = identificacion;
                 dataReader = command.ExecuteReader();
                 dataReader.Read();

@@ -21,8 +21,8 @@ namespace DAL
         {
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = "Insert Into servicio values (:ID,:Descripcion,:Precio)";
-                command.Parameters.Add("ID", OracleDbType.Varchar2).Value = servicio.IDServicio;
+                command.CommandText = "Insert Into servicio values (:servicio_id,:Descripcion,:Precio)";
+                command.Parameters.Add("servicio_id", OracleDbType.Varchar2).Value = servicio.IDServicio;
                 command.Parameters.Add("Descripcion", OracleDbType.Varchar2).Value = servicio.Nombre;
                 command.Parameters.Add("Precio", OracleDbType.Double).Value = servicio.Costo;
                 
@@ -61,8 +61,8 @@ namespace DAL
             OracleDataReader dataReader;
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = "select ID,descripcion from servicio where ID=:Id ";
-                command.Parameters.Add("Id", OracleDbType.Varchar2).Value = identificacion;
+                command.CommandText = "select servicio_id,descripcion from servicio where servicio_id=:servicio_Id ";
+                command.Parameters.Add("servicio_id", OracleDbType.Varchar2).Value = identificacion;
                 dataReader = command.ExecuteReader();
                 dataReader.Read();
                 Servicio servicio = DataReaderMapToPerson(dataReader);

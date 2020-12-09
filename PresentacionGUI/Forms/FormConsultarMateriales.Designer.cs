@@ -38,7 +38,11 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.lbl_IDFactura = new System.Windows.Forms.Label();
+            this.dataSet4 = new PresentacionGUI.DataSet4();
+            this.dataSet5 = new PresentacionGUI.DataSet5();
             ((System.ComponentModel.ISupportInitialize)(this.DtgMateriales)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet5)).BeginInit();
             this.SuspendLayout();
             // 
             // DtgMateriales
@@ -144,6 +148,16 @@
             this.lbl_IDFactura.Text = "Proveedor";
             this.lbl_IDFactura.Click += new System.EventHandler(this.lbl_IDFactura_Click);
             // 
+            // dataSet4
+            // 
+            this.dataSet4.DataSetName = "DataSet4";
+            this.dataSet4.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // dataSet5
+            // 
+            this.dataSet5.DataSetName = "DataSet5";
+            this.dataSet5.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // FormConsultarMateriales
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -163,6 +177,8 @@
             this.Name = "FormConsultarMateriales";
             this.Text = "FormConsultarMateriales";
             ((System.ComponentModel.ISupportInitialize)(this.DtgMateriales)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet5)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -179,5 +195,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lbl_IDFactura;
+        private DataSet4 dataSet4;
+        private DataSet5 dataSet5;
     }
 }
