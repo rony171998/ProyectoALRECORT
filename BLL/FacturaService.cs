@@ -115,7 +115,29 @@ namespace BLL
         }
 
 
-        public BusquedaFacturaRespuesta BuscarxIdentificacion(string identificacion)
+        public ConsultaFacturaRespuesta BuscarxIdentificacion(string identificacion)
+        {
+            ConsultaFacturaRespuesta respuesta = new ConsultaFacturaRespuesta();
+            try
+            {
+
+                conexion.Open();
+                respuesta.facturas = repositorio.BuscarPorIdcliente(identificacion);
+                conexion.Close();
+                respuesta.Mensaje = (respuesta.facturas != null) ? "Se encontró la Factura buscada" : "La persona buscada no existe";
+                respuesta.Error = false;
+                return respuesta;
+            }
+            catch (Exception e)
+            {
+
+                respuesta.Mensaje = $"Error de la Aplicacion: {e.Message}";
+                respuesta.Error = true;
+                return respuesta;
+            }
+            finally { conexion.Close(); }
+        }
+        public BusquedaFacturaRespuesta Buscarxfactura(string identificacion)
         {
             BusquedaFacturaRespuesta respuesta = new BusquedaFacturaRespuesta();
             try

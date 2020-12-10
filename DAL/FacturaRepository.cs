@@ -125,12 +125,26 @@ namespace DAL
             OracleDataReader dataReader;
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = "select ID_FACTURA from factura where ID_FACTURA=:Id ";
+                command.CommandText = "select * from factura where ID_FACTURA=:Id ";
                 command.Parameters.Add("Id", OracleDbType.Varchar2).Value = id;
                 dataReader = command.ExecuteReader();
                 dataReader.Read();
                 Factura factura = DataReaderMapToFactura(dataReader);
                 return factura;
+            }
+        }
+        public List<Factura> BuscarPorIdcliente(string id)
+        {
+            OracleDataReader dataReader;
+            List<Factura> facturas = new List<Factura>();
+            using (var command = _connection.CreateCommand())
+            {
+                command.CommandText = "select * from factura where CLIENTES_ID=:Id ";
+                command.Parameters.Add("Id", OracleDbType.Varchar2).Value = id;
+                dataReader = command.ExecuteReader();
+                dataReader.Read();
+                Factura factura = DataReaderMapToFactura(dataReader);
+                return facturas;
             }
         }
 

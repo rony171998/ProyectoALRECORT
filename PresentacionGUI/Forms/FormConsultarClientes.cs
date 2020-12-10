@@ -34,10 +34,12 @@ namespace PresentacionGUI.Forms
 
         }
 
-        private void btnConsultar_Click(object sender, EventArgs e)
+        private void btnConsultar_Click_1(object sender, EventArgs e)
         {
-            
-                
+            ConsultaPersonaRespuesta respuesta = new ConsultaPersonaRespuesta();
+            DtgClientes.DataSource = null;
+            respuesta = clienteService.ConsultarTodos();
+            DtgClientes.DataSource = respuesta.clientes.Where(p=>p.Identificacion.Equals(txtIdentificacion.Text));
         }
     }
 }

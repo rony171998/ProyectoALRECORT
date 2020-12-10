@@ -60,14 +60,14 @@ namespace DAL
             OracleDataReader dataReader ;
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = "select id_detalle from detalle_factura where id_detalle=:id_detalle ";
+                command.CommandText = "select * from detalle_factura where id_detalle=:id_detalle ";
                 command.Parameters.Add("id_detalle", OracleDbType.Varchar2).Value = identificacion;
                 dataReader = command.ExecuteReader();
                 dataReader.Read();
                 Detalle detalle = DataReaderMapToPerson(dataReader);
                 return detalle;
             }
-        }
+        }       
         private Detalle DataReaderMapToPerson(OracleDataReader dataReader)
         {
             if (!dataReader.HasRows) return null;
