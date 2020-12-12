@@ -58,7 +58,7 @@ namespace BLL
             }
             catch (Exception e)
             {
-                return $"Error de la Aplicacion: {e.Message}";
+                return $"Error de la Aplicacion: {e.ToString()}";
             }
             finally { conexion.Close(); }
         }

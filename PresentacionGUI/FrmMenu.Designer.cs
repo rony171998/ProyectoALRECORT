@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMenu));
             this.panelMenu = new System.Windows.Forms.Panel();
+            this.iconButton7 = new FontAwesome.Sharp.IconButton();
             this.iconButton5 = new FontAwesome.Sharp.IconButton();
             this.iconButton4 = new FontAwesome.Sharp.IconButton();
             this.iconButton3 = new FontAwesome.Sharp.IconButton();
@@ -43,7 +44,7 @@
             this.panelSombra = new System.Windows.Forms.Panel();
             this.panelEscritorio = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.iconButton7 = new FontAwesome.Sharp.IconButton();
+            this.iconButton8 = new FontAwesome.Sharp.IconButton();
             this.panelMenu.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panelBarraTitulo.SuspendLayout();
@@ -55,6 +56,7 @@
             // panelMenu
             // 
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(74)))));
+            this.panelMenu.Controls.Add(this.iconButton8);
             this.panelMenu.Controls.Add(this.iconButton7);
             this.panelMenu.Controls.Add(this.iconButton5);
             this.panelMenu.Controls.Add(this.iconButton4);
@@ -65,8 +67,33 @@
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelMenu.Location = new System.Drawing.Point(0, 0);
             this.panelMenu.Name = "panelMenu";
-            this.panelMenu.Size = new System.Drawing.Size(220, 499);
+            this.panelMenu.Size = new System.Drawing.Size(220, 539);
             this.panelMenu.TabIndex = 0;
+            // 
+            // iconButton7
+            // 
+            this.iconButton7.Dock = System.Windows.Forms.DockStyle.Top;
+            this.iconButton7.FlatAppearance.BorderSize = 0;
+            this.iconButton7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton7.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.iconButton7.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iconButton7.ForeColor = System.Drawing.Color.Gainsboro;
+            this.iconButton7.IconChar = FontAwesome.Sharp.IconChar.DollarSign;
+            this.iconButton7.IconColor = System.Drawing.Color.Gainsboro;
+            this.iconButton7.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton7.IconSize = 32;
+            this.iconButton7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton7.Location = new System.Drawing.Point(0, 402);
+            this.iconButton7.Name = "iconButton7";
+            this.iconButton7.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
+            this.iconButton7.Rotation = 0D;
+            this.iconButton7.Size = new System.Drawing.Size(220, 62);
+            this.iconButton7.TabIndex = 6;
+            this.iconButton7.Text = "Servicios";
+            this.iconButton7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton7.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.iconButton7.UseVisualStyleBackColor = true;
+            this.iconButton7.Click += new System.EventHandler(this.iconButton7_Click);
             // 
             // iconButton5
             // 
@@ -271,7 +298,7 @@
             this.panelEscritorio.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelEscritorio.Location = new System.Drawing.Point(220, 59);
             this.panelEscritorio.Name = "panelEscritorio";
-            this.panelEscritorio.Size = new System.Drawing.Size(838, 440);
+            this.panelEscritorio.Size = new System.Drawing.Size(838, 480);
             this.panelEscritorio.TabIndex = 3;
             this.panelEscritorio.Paint += new System.Windows.Forms.PaintEventHandler(this.panelEscritorio_Paint);
             // 
@@ -279,44 +306,44 @@
             // 
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pictureBox1.Image = global::PresentacionGUI.Properties.Resources._4001723318_9ece2a44_6bcf_4de1_b4c0_a7b46383be231;
-            this.pictureBox1.Location = new System.Drawing.Point(174, 84);
+            this.pictureBox1.Location = new System.Drawing.Point(174, 104);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(466, 240);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
-            // iconButton7
+            // iconButton8
             // 
-            this.iconButton7.Dock = System.Windows.Forms.DockStyle.Top;
-            this.iconButton7.FlatAppearance.BorderSize = 0;
-            this.iconButton7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton7.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.iconButton7.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton7.ForeColor = System.Drawing.Color.Gainsboro;
-            this.iconButton7.IconChar = FontAwesome.Sharp.IconChar.DollarSign;
-            this.iconButton7.IconColor = System.Drawing.Color.Gainsboro;
-            this.iconButton7.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton7.IconSize = 32;
-            this.iconButton7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton7.Location = new System.Drawing.Point(0, 402);
-            this.iconButton7.Name = "iconButton7";
-            this.iconButton7.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
-            this.iconButton7.Rotation = 0D;
-            this.iconButton7.Size = new System.Drawing.Size(220, 62);
-            this.iconButton7.TabIndex = 6;
-            this.iconButton7.Text = "Servicios";
-            this.iconButton7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton7.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton7.UseVisualStyleBackColor = true;
-            this.iconButton7.Click += new System.EventHandler(this.iconButton7_Click);
+            this.iconButton8.Dock = System.Windows.Forms.DockStyle.Top;
+            this.iconButton8.FlatAppearance.BorderSize = 0;
+            this.iconButton8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton8.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.iconButton8.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iconButton8.ForeColor = System.Drawing.Color.Gainsboro;
+            this.iconButton8.IconChar = FontAwesome.Sharp.IconChar.FileInvoiceDollar;
+            this.iconButton8.IconColor = System.Drawing.Color.Gainsboro;
+            this.iconButton8.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton8.IconSize = 32;
+            this.iconButton8.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton8.Location = new System.Drawing.Point(0, 464);
+            this.iconButton8.Name = "iconButton8";
+            this.iconButton8.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
+            this.iconButton8.Rotation = 0D;
+            this.iconButton8.Size = new System.Drawing.Size(220, 60);
+            this.iconButton8.TabIndex = 7;
+            this.iconButton8.Text = "Detalles de Factura";
+            this.iconButton8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton8.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.iconButton8.UseVisualStyleBackColor = true;
+            this.iconButton8.Click += new System.EventHandler(this.iconButton8_Click);
             // 
             // FrmMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.GhostWhite;
-            this.ClientSize = new System.Drawing.Size(1058, 499);
+            this.ClientSize = new System.Drawing.Size(1058, 539);
             this.Controls.Add(this.panelEscritorio);
             this.Controls.Add(this.panelSombra);
             this.Controls.Add(this.panelBarraTitulo);
@@ -353,6 +380,7 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private FontAwesome.Sharp.IconButton iconButton6;
         private FontAwesome.Sharp.IconButton iconButton7;
+        private FontAwesome.Sharp.IconButton iconButton8;
     }
 }
 

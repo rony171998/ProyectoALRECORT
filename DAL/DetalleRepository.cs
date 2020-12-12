@@ -72,12 +72,12 @@ namespace DAL
         {
             if (!dataReader.HasRows) return null;
             Detalle detalle = new Detalle();
-            detalle.Id_detalle = dataReader.GetString(0);
+            detalle.Id_detalle = dataReader.GetInt32(0).ToString();
             detalle.Cantidad = dataReader.GetInt32(1);
             detalle.ValorUnitario = dataReader.GetDouble(2);
             detalle.ValorTotal = dataReader.GetDouble(3);
-            detalle.Id_Servicio = dataReader.GetString(4);
-            detalle.Id_Factura = dataReader.GetString(5);
+            detalle.Id_Factura = dataReader.GetInt32(4).ToString();
+            detalle.Id_Servicio = dataReader.GetInt32(5).ToString();
 
             return detalle;
         }

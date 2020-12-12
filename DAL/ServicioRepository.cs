@@ -21,12 +21,9 @@ namespace DAL
         {
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = "Insert Into servicio values (:servicio_id,:Descripcion,:Precio)";
-                command.Parameters.Add("servicio_id", OracleDbType.Varchar2).Value = servicio.IDServicio;
+                command.CommandText = "Insert Into servicio values (SEQUENCE_SERVICIO.NEXTVAL,:Descripcion,:Precio)";
                 command.Parameters.Add("Descripcion", OracleDbType.Varchar2).Value = servicio.Nombre;
                 command.Parameters.Add("Precio", OracleDbType.Double).Value = servicio.Costo;
-                
-
                 var filas = command.ExecuteNonQuery();
                 return filas;
             }
@@ -86,7 +83,7 @@ namespace DAL
         {
             if (!dataReader.HasRows) return null;
             Servicio servicio = new Servicio();
-            servicio.IDServicio = dataReader.GetString(0);
+            servicio.IDServicio = dataReader.GetDecimal(0).ToString();
             servicio.Nombre = dataReader.GetString(1);
             servicio.Costo = dataReader.GetFloat(2);
             

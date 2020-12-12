@@ -51,6 +51,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.Facturar = new System.Windows.Forms.TabPage();
+            this.txtPrecio = new System.Windows.Forms.TextBox();
+            this.txtServicio = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
             this.txtID_cliente = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -61,17 +63,15 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.sERVICIOTableAdapter = new PresentacionGUI.DataSet2TableAdapters.SERVICIOTableAdapter();
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.dataSet3 = new PresentacionGUI.DataSet3();
             this.sERVICIOBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.sERVICIOTableAdapter1 = new PresentacionGUI.DataSet3TableAdapters.SERVICIOTableAdapter();
-            this.txtServicio = new System.Windows.Forms.TextBox();
-            this.txtPrecio = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.sERVICIOBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet2)).BeginInit();
             this.tabPage2.SuspendLayout();
@@ -332,7 +332,23 @@
             this.Facturar.Padding = new System.Windows.Forms.Padding(3);
             this.Facturar.Size = new System.Drawing.Size(786, 550);
             this.Facturar.TabIndex = 2;
-            this.Facturar.Text = "tabPage1";
+            this.Facturar.Text = "Facturacion";
+            // 
+            // txtPrecio
+            // 
+            this.txtPrecio.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtPrecio.Location = new System.Drawing.Point(562, 129);
+            this.txtPrecio.Name = "txtPrecio";
+            this.txtPrecio.Size = new System.Drawing.Size(154, 20);
+            this.txtPrecio.TabIndex = 98;
+            // 
+            // txtServicio
+            // 
+            this.txtServicio.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtServicio.Location = new System.Drawing.Point(399, 129);
+            this.txtServicio.Name = "txtServicio";
+            this.txtServicio.Size = new System.Drawing.Size(154, 20);
+            this.txtServicio.TabIndex = 98;
             // 
             // button3
             // 
@@ -434,6 +450,42 @@
             this.label1.TabIndex = 81;
             this.label1.Text = "Id servicio";
             // 
+            // label11
+            // 
+            this.label11.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.Gainsboro;
+            this.label11.Location = new System.Drawing.Point(596, 109);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(48, 17);
+            this.label11.TabIndex = 81;
+            this.label11.Text = "Precio";
+            // 
+            // label10
+            // 
+            this.label10.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.Gainsboro;
+            this.label10.Location = new System.Drawing.Point(444, 109);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(57, 17);
+            this.label10.TabIndex = 81;
+            this.label10.Text = "Servicio";
+            // 
+            // label13
+            // 
+            this.label13.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.Color.Gainsboro;
+            this.label13.Location = new System.Drawing.Point(333, 19);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(99, 17);
+            this.label13.TabIndex = 81;
+            this.label13.Text = "FACTURACION";
+            // 
             // label8
             // 
             this.label8.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -487,58 +539,6 @@
             // sERVICIOTableAdapter1
             // 
             this.sERVICIOTableAdapter1.ClearBeforeFill = true;
-            // 
-            // txtServicio
-            // 
-            this.txtServicio.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtServicio.Location = new System.Drawing.Point(399, 129);
-            this.txtServicio.Name = "txtServicio";
-            this.txtServicio.Size = new System.Drawing.Size(154, 20);
-            this.txtServicio.TabIndex = 98;
-            // 
-            // txtPrecio
-            // 
-            this.txtPrecio.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtPrecio.Location = new System.Drawing.Point(562, 129);
-            this.txtPrecio.Name = "txtPrecio";
-            this.txtPrecio.Size = new System.Drawing.Size(154, 20);
-            this.txtPrecio.TabIndex = 98;
-            // 
-            // label10
-            // 
-            this.label10.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.Color.Gainsboro;
-            this.label10.Location = new System.Drawing.Point(444, 109);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(57, 17);
-            this.label10.TabIndex = 81;
-            this.label10.Text = "Servicio";
-            // 
-            // label11
-            // 
-            this.label11.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.Color.Gainsboro;
-            this.label11.Location = new System.Drawing.Point(596, 109);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(48, 17);
-            this.label11.TabIndex = 81;
-            this.label11.Text = "Precio";
-            // 
-            // label13
-            // 
-            this.label13.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.ForeColor = System.Drawing.Color.Gainsboro;
-            this.label13.Location = new System.Drawing.Point(333, 19);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(99, 17);
-            this.label13.TabIndex = 81;
-            this.label13.Text = "FACTURACION";
             // 
             // FormGenerarFactura
             // 

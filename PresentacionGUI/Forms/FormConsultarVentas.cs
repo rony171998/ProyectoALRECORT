@@ -35,13 +35,13 @@ namespace PresentacionGUI.Forms
         {
             DtgFacturas.DataSource = null;
             ConsultaFacturaRespuesta respuesta = facturaService.ConsultarTodos();
-            DtgFacturas.DataSource = respuesta.facturas.Where(p=>p.IdCliente.Equals(txtIdentificacion.Text));
+            DtgFacturas.DataSource = respuesta.facturas.Where(p=>p.IdCliente.Equals(txtIdentificacion.Text)).ToList();
         }
         private void button1_Click(object sender, EventArgs e)
         {
             DtgFacturas.DataSource = null;
             ConsultaFacturaRespuesta respuesta = facturaService.ConsultarTodos();
-            DtgFacturas.DataSource = respuesta.facturas.Where(p => p.IdFactura.Equals(txtIdentificacion.Text));
+            DtgFacturas.DataSource = respuesta.facturas.Where(p => p.IdFactura.Equals(txtIdentificacion.Text)).ToList();
         }
     }
 }

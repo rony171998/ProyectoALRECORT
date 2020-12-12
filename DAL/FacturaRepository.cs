@@ -31,8 +31,8 @@ namespace DAL
         {           
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = "Insert Into factura values(:id_factura,:fecha,:total,:id_cliente)";
-                command.Parameters.Add("id_factura",OracleDbType.Varchar2).Value = factura.IdFactura;
+                command.CommandText = "Insert Into factura values(SEQUENCE_FACTURA.nextval,:fecha,:total,:id_cliente)";
+                
                 command.Parameters.Add("fecha", OracleDbType.Date).Value = factura.Fecha;
                 command.Parameters.Add("total", OracleDbType.Double).Value = factura.Total;
                 command.Parameters.Add("id_cliente", OracleDbType.Varchar2).Value = factura.IdCliente;
@@ -40,37 +40,36 @@ namespace DAL
                 var filas = command.ExecuteNonQuery();
                 return filas;
             }
+
         }
+
         public int Guardar(Factura factura)
         {
-            factura.IdFactura = (ConsultarTodos().Count() + 1).ToString(); // crear procedimiento que retorne el numero factura
+            //factura.IdFactura = (ConsultarTodos().Count() + 1).ToString(); // crear procedimiento que retorne el numero factura
             foreach (var item in factura.GetdetalleServicios())
             {
                 item.Id_Factura = factura.IdFactura;
             }
             var filas =GuardarFactura(factura);
+            int id_factura=BuscarFacturaPorFechayCliente(factura.Fecha,factura.IdCliente);
             foreach (var item in factura.GetdetalleServicios())
             {
-                GuardarDetalle(item);
-
+                GuardarDetalle(item,id_factura);
             }
             return filas;
-            
-
-
         }
-        public int GuardarDetalle(Detalle detalle)
+        public int GuardarDetalle(Detalle detalle,int id_factura)
         {
-            detalle.Id_detalle = (ConsultarTodosDetalles().Count() + 1).ToString();// generar codigo desde base datos
+           // detalle.Id_detalle = (ConsultarTodosDetalles().Count() + 1).ToString();// generar codigo desde base datos
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = "Insert Into detalle_factura values (:detalle_id,:cantidad,:valorunitario,:valortotal,:servicio_id,:id_factura)";
-                command.Parameters.Add("detalle_id", OracleDbType.Varchar2).Value = detalle.Id_detalle;
+                command.CommandText = "Insert Into detalle_factura values (SEQUENCE_DETALLE_FACTURA.NEXTVAL,:cantidad,:valorunitario,:valortotal,:id_factura,:servicio_id)";
                 command.Parameters.Add("cantidad", OracleDbType.Int32).Value = detalle.Cantidad;
                 command.Parameters.Add("valorunitario", OracleDbType.Double).Value = detalle.ValorUnitario;
                 command.Parameters.Add("valortotal", OracleDbType.Double).Value = detalle.ValorTotal;
-                command.Parameters.Add("servicio_id", OracleDbType.Varchar2).Value = detalle.Id_Servicio;
-                command.Parameters.Add("id_factura", OracleDbType.Varchar2).Value = detalle.Id_Factura;
+                command.Parameters.Add("id_factura", OracleDbType.Int32).Value = id_factura;
+                command.Parameters.Add("servicio_id", OracleDbType.Int32).Value = int.Parse(detalle.Id_Servicio);
+                
                 var filas = command.ExecuteNonQuery();
                 return filas;
             }
@@ -79,13 +78,12 @@ namespace DAL
         {
             if (!dataReader.HasRows) return null;
             Detalle detalle = new Detalle();
-            detalle.Id_detalle = dataReader.GetString(0);
+            detalle.Id_detalle = dataReader.GetDecimal(0).ToString();
             detalle.Cantidad = dataReader.GetInt32(1);
             detalle.ValorUnitario = dataReader.GetDouble(2);
             detalle.ValorTotal = dataReader.GetDouble(3);
-            detalle.Id_Servicio = dataReader.GetString(4);
-            detalle.Id_Factura = dataReader.GetString(5);
-
+            detalle.Id_Factura = dataReader.GetDecimal(4).ToString();
+            detalle.Id_Servicio = dataReader.GetDecimal(5).ToString();
             return detalle;
         }
         public List<Detalle> ConsultarTodosDetalles()
@@ -107,7 +105,6 @@ namespace DAL
             }
             return detalles;
         }
-
 
         public int Eliminar(Factura factura)
         {
@@ -133,6 +130,20 @@ namespace DAL
                 return factura;
             }
         }
+        public int BuscarFacturaPorFechayCliente(DateTime fecha,string id_cliente)
+        {
+            OracleDataReader dataReader;
+            using (var command = _connection.CreateCommand())
+            {
+                command.CommandText = "select * from factura where fecha=:fecha and clientes_id=:id_cliente";
+                command.Parameters.Add("fecha", OracleDbType.Date).Value = fecha;
+                command.Parameters.Add("id_cliente", OracleDbType.Varchar2).Value = id_cliente;
+                dataReader = command.ExecuteReader();
+                dataReader.Read();
+                Factura factura = DataReaderMapToFactura(dataReader);
+                return int.Parse(factura.IdFactura);
+            }
+        }
         public List<Factura> BuscarPorIdcliente(string id)
         {
             OracleDataReader dataReader;
@@ -152,7 +163,7 @@ namespace DAL
         {
             if (!dataReader.HasRows) return null;
             Factura factura = new Factura();
-            factura.IdFactura = dataReader.GetString(0);
+            factura.IdFactura = dataReader.GetDecimal(0).ToString();
             factura.Fecha = dataReader.GetDateTime(1);
             factura.Total =dataReader.GetDouble(2);
             factura.IdCliente = dataReader.GetString(3);

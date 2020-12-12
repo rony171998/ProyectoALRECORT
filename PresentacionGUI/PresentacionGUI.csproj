@@ -99,6 +99,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSet5.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FormConsultarDetalle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormConsultarDetalle.Designer.cs">
+      <DependentUpon>FormConsultarDetalle.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FormServicios.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -143,6 +149,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\FormConsultarDetalle.resx">
+      <DependentUpon>FormConsultarDetalle.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormConsultarClientes.resx">
       <DependentUpon>FormConsultarClientes.cs</DependentUpon>
     </EmbeddedResource>

@@ -58,7 +58,8 @@ namespace PresentacionGUI.Forms
         private Factura Mapearfactura()
         {
             factura.IdCliente = txtID_cliente.Text;
-            factura.Fecha = DateTime.Now;          
+            factura.Fecha = DateTime.Now; 
+            
             return factura;
         }
         private void agregarServicio()
@@ -69,6 +70,11 @@ namespace PresentacionGUI.Forms
             textBox1.Text = factura.Total.ToString();
             DTGFacturas.DataSource = null;
             DTGFacturas.DataSource = factura.GetdetalleServicios();
+        
+            DTGFacturas.Columns.Remove("Id_factura");
+            DTGFacturas.Columns.Remove("Id_detalle");
+            DTGFacturas.Columns.Remove("factura");
+            DTGFacturas.Columns.Remove("servicio");
         }
         private Detalle Mapeardetalle()
         {
@@ -129,6 +135,7 @@ namespace PresentacionGUI.Forms
         {
             Factura factura = Mapearfactura();
             string mensaje = facturaService.Guardar(factura);
+
             MessageBox.Show(mensaje, "Mensaje de Guardado", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
             //mostrarlistadetalle();
         }

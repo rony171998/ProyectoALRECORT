@@ -21,8 +21,7 @@ namespace DAL
         {
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = "Insert Into materiales values (:id,:Nombre,:FechaRegistro,:Idproveedor,:Cantidad)";
-                command.Parameters.Add("id", OracleDbType.Varchar2).Value = material.Id;
+                command.CommandText = "Insert Into materiales values (SEQUENCIA_MAYERIALES.NETXVAL,:Nombre,:FechaRegistro,:Idproveedor,:Cantidad)";
                 command.Parameters.Add("Nombre", OracleDbType.Varchar2).Value = material.Nombre;
                 command.Parameters.Add("Fecharegistro", OracleDbType.Date).Value = material.FechaRegistro;             
                 command.Parameters.Add("IdProveedor", OracleDbType.Varchar2).Value = material.IdProveedor;
@@ -76,7 +75,7 @@ namespace DAL
         {
             if (!dataReader.HasRows) return null;
             Material material = new Material();
-            material.Id = dataReader.GetString(0);
+            material.Id = dataReader.GetDecimal(0).ToString();
             material.Nombre = dataReader.GetString(1);
             material.FechaRegistro = dataReader.GetDateTime(2);
             material.IdProveedor = dataReader.GetString(3);
