@@ -21,6 +21,7 @@ namespace DAL
         {
             using (var command = _connection.CreateCommand())
             {
+
                 command.CommandText = "select sum(valor_total) from detalle_factura where id_factura=:id_factura ";
                 command.Parameters.Add("id_factura", OracleDbType.Varchar2).Value = factura.IdFactura;
                 var filas = command.ExecuteNonQuery();
