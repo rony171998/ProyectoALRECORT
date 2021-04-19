@@ -28,12 +28,12 @@ namespace DAL
                 return filas;
             }
         }
-        public int Eliminar(Servicio servicio)
+        public int Eliminar(string codigo_servicio)
         {
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = "Delete from servicio where Id=:Id";
-                command.Parameters.Add("Id", OracleDbType.Varchar2).Value = servicio.IDServicio;
+                command.CommandText = "Delete from servicio where servicio_Id=:Id";
+                command.Parameters.Add("Id", OracleDbType.Varchar2).Value = codigo_servicio;
                 var filas = command.ExecuteNonQuery();
                 return filas;
             }
@@ -58,7 +58,7 @@ namespace DAL
             OracleDataReader dataReader;
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = "select servicio_id,descripcion from servicio where servicio_id=:servicio_Id ";
+                command.CommandText = "select * from servicio where servicio_id=:servicio_Id ";
                 command.Parameters.Add("servicio_id", OracleDbType.Varchar2).Value = identificacion;
                 dataReader = command.ExecuteReader();
                 dataReader.Read();

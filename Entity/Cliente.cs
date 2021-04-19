@@ -8,7 +8,8 @@ namespace Entity
 {
     public class Cliente
     {
-        public Cliente(string identificacion, string primerNombre, string segundoNombre, string primerApellido, string segundoApellido, string edad, string sexo, string telefono,string email)
+        public Cliente(string identificacion, string primerNombre, string segundoNombre, string primerApellido, 
+            string segundoApellido, string edad, string sexo, string telefono,string email,DateTime fechaCita)
         {
             Identificacion = identificacion;
             PrimerNombre = primerNombre;
@@ -17,10 +18,9 @@ namespace Entity
             SegundoApellido = segundoApellido;
             Edad = edad;
             Sexo = sexo;
-            Telefono = telefono;
-            
-            //Email = email;
-
+            Telefono = telefono;           
+            Email = email;
+            FechaCita = fechaCita;
         }
 
         public Cliente()
@@ -36,10 +36,8 @@ namespace Entity
         public string Edad { get; set; }
         public string Sexo { get; set; }
         public string Telefono { get; set; }
-
-        
-
-        //public string Email { get; set; }
+        public DateTime FechaCita { get; set; }
+        public string Email { get; set; }
 
 
 

@@ -96,7 +96,7 @@ namespace PresentacionGUI
         private void iconButton2_Click(object sender, EventArgs e)
         {
             ActivarBoton(sender, ColoresRGB.SegundoColor);
-            OpenChildForm(new FormConsultarClientes());
+            OpenChildForm(new FormClientes());
         }
 
         private void iconButton3_Click(object sender, EventArgs e)
@@ -148,6 +148,11 @@ namespace PresentacionGUI
         {
             ActivarBoton(sender, ColoresRGB.QuintoColor);
             OpenChildForm(new Detalle_Factura());
+        }
+
+        private void FrmIconoChildActual_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -111,11 +111,11 @@
     <Compile Include="Forms\FormServicios.Designer.cs">
       <DependentUpon>FormServicios.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormConsultarClientes.cs">
+    <Compile Include="Forms\FormClientes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FormConsultarClientes.Designer.cs">
-      <DependentUpon>FormConsultarClientes.cs</DependentUpon>
+    <Compile Include="Forms\FormClientes.Designer.cs">
+      <DependentUpon>FormClientes.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FormConsultarMateriales.cs">
       <SubType>Form</SubType>
@@ -152,8 +152,8 @@
     <EmbeddedResource Include="Forms\FormConsultarDetalle.resx">
       <DependentUpon>FormConsultarDetalle.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormConsultarClientes.resx">
-      <DependentUpon>FormConsultarClientes.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FormClientes.resx">
+      <DependentUpon>FormClientes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormConsultarMateriales.resx">
       <DependentUpon>FormConsultarMateriales.cs</DependentUpon>

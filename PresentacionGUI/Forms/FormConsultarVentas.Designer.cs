@@ -39,7 +39,6 @@
             // 
             // btnConsultar
             // 
-            this.btnConsultar.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnConsultar.Location = new System.Drawing.Point(308, 102);
             this.btnConsultar.Name = "btnConsultar";
             this.btnConsultar.Size = new System.Drawing.Size(107, 26);
@@ -50,7 +49,7 @@
             // 
             // DtgFacturas
             // 
-            this.DtgFacturas.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.DtgFacturas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DtgFacturas.BackgroundColor = System.Drawing.Color.LightSteelBlue;
             this.DtgFacturas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DtgFacturas.Location = new System.Drawing.Point(21, 153);
@@ -60,7 +59,6 @@
             // 
             // label1
             // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label1.Location = new System.Drawing.Point(39, 109);
@@ -71,7 +69,6 @@
             // 
             // txtIdentificacion
             // 
-            this.txtIdentificacion.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtIdentificacion.Location = new System.Drawing.Point(115, 106);
             this.txtIdentificacion.Name = "txtIdentificacion";
             this.txtIdentificacion.Size = new System.Drawing.Size(173, 20);
@@ -79,7 +76,6 @@
             // 
             // button1
             // 
-            this.button1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.button1.Location = new System.Drawing.Point(436, 102);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(108, 26);
@@ -90,7 +86,6 @@
             // 
             // label2
             // 
-            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label2.Location = new System.Drawing.Point(344, 38);
@@ -104,7 +99,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(74)))));
-            this.ClientSize = new System.Drawing.Size(934, 539);
+            this.ClientSize = new System.Drawing.Size(895, 539);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.txtIdentificacion);
             this.Controls.Add(this.label2);

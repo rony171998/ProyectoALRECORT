@@ -40,7 +40,7 @@ namespace BLL
             }
             finally { conexion.Close(); }
         }
-        public string Eliminar(Cliente cliente)
+        public string Modificar(Cliente cliente)
         {
             Email email = new Email();
             string mensajeemail = string.Empty;
@@ -49,11 +49,37 @@ namespace BLL
                 conexion.Open();
                 if (repositorio.BuscarPorIdentificacion(cliente.Identificacion) == null)
                 {
-                    repositorio.Guardar(cliente);
-                    //mensajeemail = email.EnviarEmail(cliente);
-                    return $"Se guardaron los de {cliente.PrimerNombre} datos satisfactoriamente";
+                    return $"La persona no existe";
                 }
-                return $"La persona ya existe";
+                else
+                {
+                    repositorio.Modificar(cliente);
+                    //mensajeemail = email.EnviarEmail(cliente);
+                    return $"Se modificaron los datos de {cliente.PrimerNombre} satisfactoriamente";
+                    
+                }
+                
+            }
+            catch (Exception e)
+            {
+                return $"Error de la Aplicacion: {e.ToString()}";
+            }
+            finally { conexion.Close(); }
+        }
+        public string Eliminar(string identificacion)
+        {
+            Email email = new Email();
+            string mensajeemail = string.Empty;
+            try
+            {
+                conexion.Open();
+                if (repositorio.BuscarPorIdentificacion(identificacion) != null)
+                {
+                    repositorio.Eliminar(identificacion);
+                    //mensajeemail = email.EnviarEmail(cliente);
+                    return $"Se elimino correctamente";
+                }
+                return $"La persona no existe";
             }
             catch (Exception e)
             {
@@ -97,7 +123,6 @@ namespace BLL
             BusquedaPersonaRespuesta respuesta = new BusquedaPersonaRespuesta();
             try
             {
-
                 conexion.Open();
                 respuesta.cliente = repositorio.BuscarPorIdentificacion(identificacion);
                 conexion.Close();

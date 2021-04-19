@@ -30,36 +30,27 @@ namespace PresentacionGUI.Forms
             facturaService = new FacturaService(connectionString);
             detalleService = new DetalleService(connectionString);
             servicioService = new ServicioService(connectionString);            
-            llenarcombos();
-          
+            llenarcombos(); 
+            
+            
         }
         public void llenarcombos()
         {
             ConsultaServicioRespuesta respuestaservicio = servicioService.ConsultarTodos();
             cmbId_servicio.DataSource = respuestaservicio.servicios.Select(p => p.IDServicio).ToList();
+            verServicio();
+        }
+        public void verServicio()
+        {
             BusquedaServicioRespuesta respuestaServicioBusqueda = servicioService.BuscarIdentificacion(cmbId_servicio.Text);
             txtServicio.Text = respuestaServicioBusqueda.servicio.Nombre.ToString();
-            txtPrecio.Text=respuestaServicioBusqueda.servicio.Costo.ToString();
+            txtPrecio.Text = respuestaServicioBusqueda.servicio.Costo.ToString();
         }
-        private Cliente MapearCliente()
-        {
-            cliente = new Cliente();
-            cliente.Identificacion = txtIdentificacion.Text;
-            cliente.PrimerNombre = txtPrimerNombre.Text;
-            cliente.SegundoNombre = txtSegundoNombre.Text;
-            cliente.PrimerApellido = txtPrimerApellido.Text;
-            cliente.SegundoApellido = txtPrimerApellido.Text;
-            cliente.Edad = txtEdad.Text;
-            cliente.Sexo = cmbSexo.Text;
-            cliente.Telefono = txtTelefono.Text;            
-            //cliente.Email = txtCorreo.Text;
-            return cliente;
-        }       
+              
         private Factura Mapearfactura()
         {
             factura.IdCliente = txtID_cliente.Text;
-            factura.Fecha = DateTime.Now; 
-            
+            factura.Fecha = DateTime.Now;            
             return factura;
         }
         private void agregarServicio()
@@ -76,39 +67,7 @@ namespace PresentacionGUI.Forms
             DTGFacturas.Columns.Remove("factura");
             DTGFacturas.Columns.Remove("servicio");
         }
-        private Detalle Mapeardetalle()
-        {
-            detalle = new Detalle();
-            //detalle.Id_detalle = txtId_detalle.Text;
-            detalle.Id_Servicio = cmbId_servicio.Text;
-            //detalle.Id_Factura = cmbId_factura.Text;
-            BusquedaServicioRespuesta respuestaservicio = servicioService.BuscarIdentificacion(cmbId_servicio.Text);
-            detalle.ValorUnitario = respuestaservicio.servicio.Costo;         
-            detalle.Cantidad = int.Parse( txtCantidad.Text);
-            detalle.ValorTotal = detalle.CalcularValor();
-            factura.AgregarDetalleServicio(respuestaservicio.servicio, int.Parse(txtCantidad.Text));
-            return detalle;
-        }
-        public void mostrarlistafactura()
-        {
-            ConsultaFacturaRespuesta respuesta = new ConsultaFacturaRespuesta();
-            DTGFacturas.DataSource = null;
-            respuesta = facturaService.ConsultarTodos();
-            DTGFacturas.DataSource = respuesta.facturas;
-        }
-        public void mostrarlistadetalle()
-        {
-            ConsultaDetalleRespuesta respuesta = new ConsultaDetalleRespuesta();
-            DTGFacturas.DataSource = null;
-            respuesta = detalleService.ConsultarTodos();
-            DTGFacturas.DataSource = respuesta.detalles;
-        }
-        private void boton_Registrar_Click(object sender, EventArgs e)
-        {
-            Cliente cliente = MapearCliente();
-            string mensaje = clienteService.Guardar(cliente);
-            MessageBox.Show(mensaje, "Mensaje de Guardado", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);           
-        }
+        
         private void tabPage2_Click(object sender, EventArgs e)
         {
 
@@ -135,13 +94,39 @@ namespace PresentacionGUI.Forms
         {
             Factura factura = Mapearfactura();
             string mensaje = facturaService.Guardar(factura);
-
-            MessageBox.Show(mensaje, "Mensaje de Guardado", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-            //mostrarlistadetalle();
+            MessageBox.Show(mensaje, "Mensaje de Guardado", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);           
         }
         private void button3_Click(object sender, EventArgs e)
         {
             agregarServicio();
+        }
+
+        private void cmbId_servicio_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            verServicio();
+        }
+
+        private void BtnBuscar_Click(object sender, EventArgs e)
+        {
+            
+            BusquedaPersonaRespuesta respuesta = clienteService.BuscarxIdentificacion(txtID_cliente.Text);
+
+            if (respuesta.Error)
+            {
+                MessageBox.Show(respuesta.Mensaje, "Mensaje de Buscar", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                
+            }
+            else
+            {
+                
+                MessageBox.Show(respuesta.Mensaje, "Mensaje de Buscar", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                if (respuesta.cliente != null)
+                {
+                    TxtNombreCliente.Text = null;
+                    TxtNombreCliente.Text = respuesta.cliente.PrimerNombre;
+                }
+                
+            } 
         }
     }
 }

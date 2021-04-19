@@ -33,7 +33,6 @@ namespace PresentacionGUI.Forms
         {
 
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
             Material material = Mapear();
@@ -71,7 +70,6 @@ namespace PresentacionGUI.Forms
             cmbProveedor.DataSource = proveedor.ToArray();
 
         }
-
         private void FormConsultarMateriales_Load(object sender, EventArgs e)
         {
             // TODO: esta línea de código carga datos en la tabla 'dataSet5.PROVEEDORES' Puede moverla o quitarla según sea necesario.

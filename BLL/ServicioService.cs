@@ -39,20 +39,20 @@ namespace BLL
             }
             finally { conexion.Close(); }
         }
-        public string Eliminar(Servicio servicio)
+        public string Eliminar(string codigo_servicio)
         {
             Email email = new Email();
             string mensajeemail = string.Empty;
             try
             {
                 conexion.Open();
-                if (repositorio.BuscarPorIdentificacion(servicio.IDServicio) == null)
+                if (repositorio.BuscarPorIdentificacion(codigo_servicio) != null)
                 {
-                    repositorio.Guardar(servicio);
+                    repositorio.Eliminar(codigo_servicio);
                     //mensajeemail = email.EnviarEmail(servicio);
-                    return $"Se guardaron los de {servicio.Nombre} datos satisfactoriamente";
+                    return $"Se eliminaron los datos del servicio {codigo_servicio} satisfactoriamente";
                 }
-                return $"La persona ya existe";
+                return $"Codigo servicio no existe";
             }
             catch (Exception e)
             {
